@@ -8,4 +8,5 @@ class Issue < ActiveRecord::Base
   has_many :promises through: :questions
   has_many :party_standpoints
   has_many :candidate_standpoints
+  mount_uploader :image, ImageUploader
 end
