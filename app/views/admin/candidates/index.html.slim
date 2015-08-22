@@ -17,13 +17,13 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = c.name
         td align="center" = c.party.short_name
         td align="center"
-          - if c.ad_eight_datum? and c.ad_nine_datum?
+          - if c.eight? and c.nine?
             | 第八屆立委
             br/
             | 第九屆候選人
-          - elsif c.ad_eight_datum?
+          - elsif c.eight?
             | 第八屆立委
-          - elsif c.ad_nine_datum?
+          - elsif c.nine?
             | 第九屆候選人
         td align="center" width="155"
           = link_to "編輯", edit_admin_candidate_path(c)
@@ -35,13 +35,13 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = c.name
         td align="center" = c.party.short_name
         td align="center"
-          - if c.ad_eight_datum? and c.ad_nine_datum?
+          - if c.eight? and c.nine?
             | 第八屆立委
             br/
             | 第九屆候選人
-          - elsif c.ad_eight_datum?
+          - elsif c.eight?
             | 第八屆立委
-          - elsif c.ad_nine_datum?
+          - elsif c.nine?
             | 第九屆候選人
         td align="center" width="155"
           = link_to "編輯", edit_admin_candidate_path(c)

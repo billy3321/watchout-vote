@@ -17,8 +17,8 @@ module ApplicationHelper
 
   def admin_meta_tags
     {
-      separator: "：",
-      site: "",
+      separator: "-",
+      site: "立委求職中網站管理後台",
       og: {
         image: "#{Setting.url.protocol}://#{Setting.url.host}/images/logo.png"
       }

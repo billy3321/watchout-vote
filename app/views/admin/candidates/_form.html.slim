@@ -41,7 +41,7 @@ table border="1" cellpadding="5" width="100%"
   tr
     th 政黨
     td
-      = f.association :party, label_method: :name, value_method: :id, include_blank: false
+      = f.association :party, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
     th 性別
     td

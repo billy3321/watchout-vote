@@ -1,6 +1,6 @@
 h1 承諾書問題管理
 .btn
-  = link_to "新增問題", new_admin_questions_path
+  = link_to "新增問題", new_admin_question_path
 table border="1" cellpadding="5" width="100%" 
   tr
     th 編號
@@ -13,7 +13,7 @@ table border="1" cellpadding="5" width="100%"
     - if num % 2 == 0
       tr
         td align="center" valign="middle" width="94" = q.id
-        td align="center" = q.name
+        td align="center" = q.title
         td align="center" = q.description
         td align="center" width="177"
           = link_to "編輯", edit_admin_question_path(q)
@@ -22,7 +22,7 @@ table border="1" cellpadding="5" width="100%"
     - else
       tr.even
         td align="center" valign="middle" width="94" = q.id
-        td align="center" = q.name
+        td align="center" = q.title
         td align="center" = q.description
         td align="center" width="177"
           = link_to "編輯", edit_admin_question_path(q)

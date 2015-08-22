@@ -1,6 +1,6 @@
 h1 人物表態管理
 .btn
-  = link_to "新增法律提案", new_admin_bills_path
+  = link_to "新增法律提案", new_admin_bill_path
 table border="1" cellpadding="5" width="100%" 
   tr
     th 編號
@@ -18,7 +18,7 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = b.date.strftime('%Y-%m-%d')
         td align="center" 法律提案
         td align="center" width="155" 
-          = link_to "編輯", edit_admin_bills_path(b)
+          = link_to "編輯", edit_admin_bill_path(b)
           | ｜
           = link_to "刪除", admin_bill_path(b), method: :delete, data: { confirm: '確認要刪除嗎？' }
     - else
@@ -28,7 +28,7 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = b.date.strftime('%Y-%m-%d')
         td align="center" 法律提案
         td align="center" width="155" 
-          = link_to "編輯", edit_admin_bills_path
+          = link_to "編輯", edit_admin_bill_path(b)
           | ｜
           = link_to "刪除", admin_bills_path(b), method: :delete, data: { confirm: '確認要刪除嗎？' }
 #page

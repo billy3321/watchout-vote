@@ -89,6 +89,6 @@ class Admin::SlidesController < Admin::BaseController
   # Never trust parameters from the scary internet, only allow the white list through.
   def slide_params
     params.require(:slide).permit(:alt, :issue_id, :image, :image_cache, :remove_image, {slide_ids: []}, {slide_positions: []},
-      {order: [:id, :position]})
+      {order: [:id, :position]}, :position)
   end
 end

@@ -195,7 +195,9 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text    "question"
+    t.string  "title"
+    t.string  "description"
+    t.text    "content"
     t.integer "issue_id"
   end
 

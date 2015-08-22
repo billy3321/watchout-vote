@@ -33,13 +33,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
 gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'factory_girl_rails'
 gem 'kaminari'
-gem 'jquery-ui-rails'
 gem 'chosen-rails'
 gem 'carrierwave'
 gem 'mini_magick'

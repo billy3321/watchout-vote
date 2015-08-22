@@ -1,4 +1,4 @@
-h1 人物承諾管理
+h1 候選人承諾書管理
 .btn
   = link_to "新增承諾", new_admin_promise_path
 table border="1" cellpadding="5" width="100%"
@@ -18,7 +18,17 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = p.candidate.name
         td align="center" = p.issue.name
         td align="center" = p.summary
-        td align="center" = p.decision
+        td align="center"
+          - if p.decision == 'agree'
+            | 贊成
+          - elsif p.decision == 'disagree'
+            | 反對
+          - elsif p.decision == 'abstain'
+            | 拒絕表態
+          - elsif p.decision == 'notvote'
+            | 未表態
+          - else
+            | 未知
         td align="center" width="116"
           = link_to "編輯", edit_admin_promise_path(p)
           | ｜
@@ -29,7 +39,17 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = p.candidate.name
         td align="center" = p.issue.name
         td align="center" = p.summary
-        td align="center" = p.decision
+        td align="center"
+          - if p.decision == 'agree'
+            | 贊成
+          - elsif p.decision == 'disagree'
+            | 反對
+          - elsif p.decision == 'abstain'
+            | 拒絕表態
+          - elsif p.decision == 'notvote'
+            | 未表態
+          - else
+            | 未知
         td align="center" width="116"
           = link_to "編輯", edit_admin_promise_path(p)
           | ｜

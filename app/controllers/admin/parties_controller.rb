@@ -61,6 +61,7 @@ class Admin::PartiesController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def party_params
-    params.require(:party).permit(:name, :published, :description, :image, :image_cache, :remove_image, :ngo, :ngo_link)
+    params.require(:party).permit(:name, :short_name, :abbreviation, :image, :image_cache, :remove_image,
+      :background, :background_cache, :background_image, :prediction)
   end
 end

@@ -3,11 +3,11 @@ table border="1" cellpadding="5" width="100%"
     th width="131" 候選人
     td
       p
-        = f.association :candidate, label_method: :name, value_method: :id, include_blank: false
+        = f.association :candidate, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
     th 議題
     td
-      = f.association :issue, label_method: :name, value_method: :id, include_blank: false
+      = f.association :issue, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
     th 贊成
     td
@@ -26,5 +26,5 @@ table border="1" cellpadding="5" width="100%"
       = f.input :notvote, label: false, required: true, input_html: { class: 'input_14' }
 .btn
   - if @candidate_standpoint.new_record?
-    = link_to "回上頁", admin_parties_path, class: "back"
+    = link_to "回上頁", admin_candidate_standpoints_path, class: "back"
   = f.submit '儲存', id: 'button', class: 'submit'

@@ -14,5 +14,7 @@
  *= require admin-sort
  *= require admin-style
  *= require thickbox
+ *= require jquery.datetimepicker
+ *= require chosen
  *= require_self
  */

@@ -27,7 +27,7 @@ table border="1" cellpadding="5" width="100%"
     td
       = f.input :background, as: :file, label: false, required: true
       = f.input :background_cache, as: :hidden
-      = f.input :background_image, as:  :boolean, label: '移除圖片'
+      = f.input :remove_background, as:  :boolean, label: '移除圖片'
       = image_tag(@party.background_url) if @party.background?
 .btn
   - if @party.new_record?

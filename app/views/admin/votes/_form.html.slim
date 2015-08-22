@@ -30,7 +30,7 @@ table border="1" cellpadding="5" width="100%"
     th valign="top" 立場統計分類
     td
       = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote']], input_html: { class: 'form-control' }, include_blank: false
-  - unless @bill.new_record?
+  - unless @vote.new_record?
     = f.simple_fields_for :clarify do |c|
       tr
         th valign="top"  立委澄清說明
@@ -45,6 +45,6 @@ table border="1" cellpadding="5" width="100%"
     td
       = f.input :url, as: :string, label: false, required: true
 .btn
-  - if @bill.new_record?
-    = link_to "回上頁", admin_bills_path, class: "back"
+  - if @vote.new_record?
+    = link_to "回上頁", admin_votes_path, class: "back"
   = f.submit '儲存', id: 'button', class: 'submit'

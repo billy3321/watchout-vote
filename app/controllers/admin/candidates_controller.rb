@@ -61,6 +61,9 @@ class Admin::CandidatesController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def candidate_params
-    params.require(:candidate).permit(:name, :published, :description, :image, :image_cache, :remove_image, :ngo, :ngo_link)
+    params.require(:candidate).permit(:name, :image, :image_cache, :remove_image, :party_id, :gender,
+      :age, :education, :experience, :manifesto, :aimed_bill, :aimed_issue, :legislator_no, :withdraw,
+      :eight, :eight_constituency_id, :nine, :nine_constituency_id, :nine_position, :nine_number,
+      :target, {:committee_ids => []})
   end
 end

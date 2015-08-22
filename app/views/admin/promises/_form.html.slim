@@ -2,19 +2,15 @@ table border="1" cellpadding="5" width="100%"
   tr
     th width="141" 候選人姓名
     td width="677" 
-      = f.association :candidate, label_method: :name, value_method: :id, include_blank: false
+      = f.association :candidate, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
     th 發言日期
     td
       = f.input :date, as: :string, label: false, input_html: { class: "datetimepicker input_14" }, required: true
   tr
-    th 議題名稱
-    td
-      = f.association :issue, label_method: :name, value_method: :id, include_blank: false
-  tr
     th 承諾書問題
     td
-      = f.association :question, label_method: :name, value_method: :id, include_blank: false
+      = f.association :question, label: false, label_method: :title, value_method: :id, include_blank: false
   tr
     th 承諾書答覆
     td

@@ -1,6 +1,6 @@
 h1 政黨表態統計
 .btn
-  = link_to "新增統計", new_party_standpoint_path
+  = link_to "新增統計", new_admin_party_standpoint_path
 table border="1" cellpadding="5" width="100%" 
   tr
     th 編號
@@ -16,7 +16,7 @@ table border="1" cellpadding="5" width="100%"
     - num += 1
     - if num % 2 == 0
       tr
-        td align="center" valign="top" width="20", = p.id
+        td align="center" valign="top" width="20" = p.id
         td align="center" = p.party.name
         td align="center" = p.issue.name
         td align="center" = p.agree
@@ -29,7 +29,7 @@ table border="1" cellpadding="5" width="100%"
           = link_to "刪除", admin_party_standpoint_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
     - else
       tr.even
-        td align="center" valign="top" width="20", = p.id
+        td align="center" valign="top" width="20" = p.id
         td align="center" = p.party.name
         td align="center" = p.issue.name
         td align="center" = p.agree

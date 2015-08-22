@@ -11,16 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require ckeditor/init
 //= require chosen-jquery
 //= require jquery.datetimepicker
 //= require html.sortable
+//= require turbolinks
 
-var ready_ran = 0;
+// var ready_ran = 0;
 
-set_positions = function(){
+var set_positions = function(){
   // loop through and give each task a data-pos
   // attribute that holds its position in the DOM
   $('.panel.panel-default').each(function(i){
@@ -29,23 +30,21 @@ set_positions = function(){
 }
 
 var ready = function(){
-  if (ready_ran == 1){
-    return;
-  }else{
-    ready_ran = 1;
-  }
+  // if (ready_ran == 1){
+  //   console.log('ran')
+  // }else{
+  //   ready_ran = 1;
+  // }
   // datetiimepicker
-  $('.datetimepicker').datetimepicker({format: 'Y-m-d H:i'});
+  $('.datetimepicker').datetimepicker({format: 'Y-m-d'});
   // enable chosen js
-  if(!$('div.chosen-container.chosen-container-multi').length){
-    $('.chosen-select').chosen({
-      search_contains: true,
-      allow_single_deselect: true,
-      no_results_text: 'No results matched',
-      width: '400px'
-    });
-    $(".chosen-select").trigger('chosen:updated');
-  }
+  $('.chosen-select').chosen({
+    search_contains: true,
+    allow_single_deselect: true,
+    no_results_text: 'No results matched',
+    width: '400px'
+  });
+  $(".chosen-select").trigger('chosen:updated');
 
   set_positions();
   $.ajaxSetup({
@@ -79,7 +78,9 @@ var ready = function(){
       }
     });
   });
+  // console.log('ready');
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);
+// $(document).on('page:load', ready);
+
