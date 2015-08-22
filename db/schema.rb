@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "bills", force: :cascade do |t|
     t.integer  "candidate_id"
     t.integer  "issue_id"
-    t.integer  "record_id"
-    t.string   "record_type"
     t.text     "content"
     t.text     "summary"
     t.string   "detail"
@@ -28,8 +26,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string   "url"
     t.datetime "date"
   end
-
-  add_index "bills", ["record_type", "record_id"], name: "index_bills_on_record_type_and_record_id", using: :btree
 
   create_table "candidate_standpoints", force: :cascade do |t|
     t.integer "candidate_id"
@@ -99,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.datetime "date"
   end
 
-  add_index "clarifies", ["record_id"], name: "index_clarifies_on_record_id", using: :btree
+  add_index "clarifies", ["record_id", "record_type"], name: "index_clarifies_on_record_id_and_record_type", unique: true, using: :btree
 
   create_table "committees", force: :cascade do |t|
     t.string "name"
@@ -138,8 +134,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "interpellations", force: :cascade do |t|
     t.integer  "candidate_id"
     t.integer  "issue_id"
-    t.integer  "record_id"
-    t.string   "record_type"
     t.text     "content"
     t.text     "summary"
     t.string   "detail"
@@ -147,8 +141,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string   "url"
     t.datetime "date"
   end
-
-  add_index "interpellations", ["record_type", "record_id"], name: "index_interpellations_on_record_type_and_record_id", using: :btree
 
   create_table "interviews", force: :cascade do |t|
     t.integer "candidate_id"
@@ -232,8 +224,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "votes", force: :cascade do |t|
     t.integer  "candidate_id"
     t.integer  "issue_id"
-    t.integer  "record_id"
-    t.string   "record_type"
     t.text     "content"
     t.text     "summary"
     t.string   "detail"
@@ -241,7 +231,5 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string   "url"
     t.datetime "date"
   end
-
-  add_index "votes", ["record_type", "record_id"], name: "index_votes_on_record_type_and_record_id", using: :btree
 
 end

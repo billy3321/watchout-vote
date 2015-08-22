@@ -6,6 +6,6 @@ class CreateClarifies < ActiveRecord::Migration
       t.text :content
       t.datetime :date
     end
-    add_index :clarifies, :record_id
+    add_index :clarifies, [:record_id, :record_type], unique: true
   end
 end

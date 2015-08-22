@@ -3,7 +3,6 @@ class CreateVotes < ActiveRecord::Migration
     create_table :votes do |t|
       t.integer :candidate_id
       t.integer :issue_id
-      t.references :record, polymorphic: true, index: true
       t.text :content
       t.text :summary
       t.string :detail
