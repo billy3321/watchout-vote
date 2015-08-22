@@ -1,0 +1,30 @@
+doctype html
+html xmlns="http://www.w3.org/1999/xhtml" 
+  head
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    = stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_tag "window._token = '#{form_authenticity_token}';"
+    = javascript_include_tag 'admin', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = display_meta_tags(admin_meta_tags)
+  - unless ['admin/sessions'].include?(params[:controller])
+    body
+      #all
+        #content_wrap
+          = render 'layouts/admin_header'
+          #main.inner
+            #header
+              | 立委求職中網站管理後台
+              - if user_signed_in?
+                | -
+                = link_to '我要登出', destroy_user_session_path, method: :delete
+            - flash.each do |key, value|
+              = content_tag(:div, value, class: "alert alert-#{key}")
+            = yield
+      = debug(params) if Rails.env.development?
+      
+  - else
+    body#longin_page
+      #all
+        = yield
+      = debug(params) if Rails.env.development?

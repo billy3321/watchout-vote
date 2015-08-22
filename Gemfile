@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'jquery-ui-rails'
 gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'
@@ -47,7 +48,12 @@ gem 'ckeditor'
 gem 'pg'
 gem 'ransack'
 gem 'unicode-display_width'
+gem 'jquery-datetimepicker-rails'
 
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-html.sortable'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

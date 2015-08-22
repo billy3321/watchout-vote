@@ -1,0 +1,22 @@
+p.hint 排序調整：將滑鼠移到區塊上，按住滑鼠上下拖曳到要的位置後放開即可調整排序
+.btn
+  = link_to "新增圖片", new_admin_issue_slide_path(issue), class: "submit"
+.row
+  .col-md-5.col-md-offset-4.sortable-slide
+    - issue.slides.each do |s|
+      .panel.panel-default data-id="#{s.id}"
+        .panel-heading
+          table border="1" cellpadding="5" width="100%" 
+            tr
+              th align="center" width="12%" 
+                p 圖檔
+              td align="left" width="40%"
+                = image_tag(s.image, width: "270", alt: s.alt) if s.image?
+              td align="left" width="36%"
+                = link_to "編輯", edit_admin_issue_slide_path(issue, s)
+                | ｜
+                = link_to "刪除", admin_issue_slide_path(issue, s), method: :delete, data: { confirm: '確認要刪除嗎？' }
+            tr
+              th align="center" 簡單描述
+              td align="left" colspan="3" = s.alt
+

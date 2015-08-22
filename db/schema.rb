@@ -16,24 +16,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ad_eight_data", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "constituency_id"
-  end
-
-  add_index "ad_eight_data", ["candidate_id"], name: "index_ad_eight_data_on_candidate_id", using: :btree
-  add_index "ad_eight_data", ["constituency_id"], name: "index_ad_eight_data_on_constituency_id", using: :btree
-
-  create_table "ad_nine_data", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "constituency_id"
-    t.integer "order"
-    t.integer "number"
-  end
-
-  add_index "ad_nine_data", ["candidate_id"], name: "index_ad_nine_data_on_candidate_id", using: :btree
-  add_index "ad_nine_data", ["constituency_id"], name: "index_ad_nine_data_on_constituency_id", using: :btree
-
   create_table "bills", force: :cascade do |t|
     t.integer  "candidate_id"
     t.integer  "issue_id"
@@ -47,8 +29,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.datetime "date"
   end
 
-  add_index "bills", ["candidate_id"], name: "index_bills_on_candidate_id", using: :btree
-  add_index "bills", ["issue_id"], name: "index_bills_on_issue_id", using: :btree
   add_index "bills", ["record_type", "record_id"], name: "index_bills_on_record_type_and_record_id", using: :btree
 
   create_table "candidate_standpoints", force: :cascade do |t|
@@ -59,9 +39,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.float   "abstain"
     t.float   "notvote"
   end
-
-  add_index "candidate_standpoints", ["candidate_id"], name: "index_candidate_standpoints_on_candidate_id", using: :btree
-  add_index "candidate_standpoints", ["issue_id"], name: "index_candidate_standpoints_on_issue_id", using: :btree
 
   create_table "candidates", force: :cascade do |t|
     t.string  "name"
@@ -75,12 +52,15 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.text    "aimed_bill"
     t.text    "aimed_issue"
     t.integer "legislator_no"
-    t.integer "target_id"
-    t.string  "target_type"
+    t.boolean "withdraw",              default: false
+    t.boolean "eight",                 default: false
+    t.integer "eight_constituency_id"
+    t.boolean "nine",                  default: false
+    t.integer "nine_constituency_id"
+    t.integer "nine_position"
+    t.integer "nine_number"
+    t.integer "target"
   end
-
-  add_index "candidates", ["party_id"], name: "index_candidates_on_party_id", using: :btree
-  add_index "candidates", ["target_type", "target_id"], name: "index_candidates_on_target_type_and_target_id", using: :btree
 
   create_table "candidates_committees", id: false, force: :cascade do |t|
     t.integer "candidate_id"
@@ -141,8 +121,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.integer "constituency_id"
   end
 
-  add_index "districts", ["constituency_id"], name: "index_districts_on_constituency_id", using: :btree
-
   create_table "dms", force: :cascade do |t|
     t.string  "name"
     t.integer "issue_id"
@@ -170,8 +148,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.datetime "date"
   end
 
-  add_index "interpellations", ["candidate_id"], name: "index_interpellations_on_candidate_id", using: :btree
-  add_index "interpellations", ["issue_id"], name: "index_interpellations_on_issue_id", using: :btree
   add_index "interpellations", ["record_type", "record_id"], name: "index_interpellations_on_record_type_and_record_id", using: :btree
 
   create_table "interviews", force: :cascade do |t|
@@ -180,8 +156,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.text    "description"
     t.string  "alt"
   end
-
-  add_index "interviews", ["candidate_id"], name: "index_interviews_on_candidate_id", using: :btree
 
   create_table "issues", force: :cascade do |t|
     t.string  "name"
@@ -194,14 +168,12 @@ ActiveRecord::Schema.define(version: 20150821172158) do
 
   create_table "parties", force: :cascade do |t|
     t.string  "name"
+    t.string  "short_name"
     t.string  "abbreviation"
     t.string  "image"
+    t.string  "background"
     t.integer "prediction"
-    t.integer "target_id"
-    t.string  "target_type"
   end
-
-  add_index "parties", ["target_type", "target_id"], name: "index_parties_on_target_type_and_target_id", using: :btree
 
   create_table "party_standpoints", force: :cascade do |t|
     t.integer "party_id"
@@ -211,9 +183,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.float   "abstain"
     t.float   "notvote"
   end
-
-  add_index "party_standpoints", ["issue_id"], name: "index_party_standpoints_on_issue_id", using: :btree
-  add_index "party_standpoints", ["party_id"], name: "index_party_standpoints_on_party_id", using: :btree
 
   create_table "promises", force: :cascade do |t|
     t.integer  "candidate_id"
@@ -225,24 +194,17 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.datetime "date"
   end
 
-  add_index "promises", ["candidate_id"], name: "index_promises_on_candidate_id", using: :btree
-  add_index "promises", ["question_id"], name: "index_promises_on_question_id", using: :btree
-
   create_table "questions", force: :cascade do |t|
     t.text    "question"
     t.integer "issue_id"
   end
 
-  add_index "questions", ["issue_id"], name: "index_questions_on_issue_id", using: :btree
-
   create_table "slides", force: :cascade do |t|
     t.integer "issue_id"
     t.string  "image"
     t.string  "alt"
-    t.integer "order"
+    t.integer "position"
   end
-
-  add_index "slides", ["issue_id"], name: "index_slides_on_issue_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -278,29 +240,6 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.datetime "date"
   end
 
-  add_index "votes", ["candidate_id"], name: "index_votes_on_candidate_id", using: :btree
-  add_index "votes", ["issue_id"], name: "index_votes_on_issue_id", using: :btree
   add_index "votes", ["record_type", "record_id"], name: "index_votes_on_record_type_and_record_id", using: :btree
 
-  add_foreign_key "ad_eight_data", "candidates"
-  add_foreign_key "ad_eight_data", "constituencies"
-  add_foreign_key "ad_nine_data", "candidates"
-  add_foreign_key "ad_nine_data", "constituencies"
-  add_foreign_key "bills", "candidates"
-  add_foreign_key "bills", "issues"
-  add_foreign_key "candidate_standpoints", "candidates"
-  add_foreign_key "candidate_standpoints", "issues"
-  add_foreign_key "candidates", "parties"
-  add_foreign_key "districts", "constituencies"
-  add_foreign_key "interpellations", "candidates"
-  add_foreign_key "interpellations", "issues"
-  add_foreign_key "interviews", "candidates"
-  add_foreign_key "party_standpoints", "issues"
-  add_foreign_key "party_standpoints", "parties"
-  add_foreign_key "promises", "candidates"
-  add_foreign_key "promises", "questions"
-  add_foreign_key "questions", "issues"
-  add_foreign_key "slides", "issues"
-  add_foreign_key "votes", "candidates"
-  add_foreign_key "votes", "issues"
 end

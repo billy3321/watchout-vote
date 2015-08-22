@@ -3,7 +3,7 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.string :name
       t.string :image
-      t.references :party, index: true, foreign_key: true
+      t.integer :party_id
       t.string :gender
       t.integer :age
       t.text :education
@@ -12,7 +12,14 @@ class CreateCandidates < ActiveRecord::Migration
       t.text :aimed_bill
       t.text :aimed_issue
       t.integer :legislator_no
-      t.references :target, polymorphic: true, index: true
+      t.boolean :withdraw, default: false
+      t.boolean :eight, default: false
+      t.integer :eight_constituency_id
+      t.boolean :nine, default: false
+      t.integer :nine_constituency_id
+      t.integer :nine_position
+      t.integer :nine_number
+      t.integer :target, polymorphic: true
     end
   end
 end

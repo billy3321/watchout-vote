@@ -1,8 +1,8 @@
 class CreatePromises < ActiveRecord::Migration
   def change
     create_table :promises do |t|
-      t.references :candidate, index: true, foreign_key: true
-      t.references :question, index: true, foreign_key: true
+      t.integer :candidate_id
+      t.integer :question_id
       t.text :answer
       t.text :summary
       t.string :detail

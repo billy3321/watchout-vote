@@ -1,0 +1,42 @@
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th width="131" 議題名稱
+    td width="281" 
+      p
+        = f.input :name, label: false, required: true, input_html: { class: 'long-input' }
+    th width="99"  是否公開
+    td width="279" 
+      p
+        - if @issue.new_record?
+          = f.input :published, as: :boolean, label: false, input_html: { checked: true }
+          | 公開
+        - else
+          = f.input :published, as: :boolean, label: false
+          | 公開
+  tr
+    th 議題主圖片
+    td colspan="3" 
+      = f.input :image, as: :file, label: false, required: true
+      = f.input :image_cache, as: :hidden
+      = f.input :remove_image, as:  :boolean, label: '移除圖片'
+      = image_tag(@issue.image_url, class: "issue-img") if @issue.image?
+  tr
+    th 議題短描述
+    td colspan="3"
+      = f.cktext_area :description, label: false, required: true, input_html: { class: 'long-input' }
+  tr
+    th 協力NGO名字
+    td colspan="3"
+      = f.input :ngo, label: false, input_html: { class: 'long-input' }
+  tr
+    th valign="top" 協力NGO連結
+    td colspan="3"
+      = f.input :ngo_link, label: false, input_html: { class: 'long-input' }
+.btn
+  - if @issue.new_record?
+    = link_to "回上頁", admin_issues_path, class: "back"
+  = f.submit '儲存', id: 'button', class: 'submit'
+
+- unless @issue.new_record?
+  = render partial: 'slides', locals: {issue: @issue}
+

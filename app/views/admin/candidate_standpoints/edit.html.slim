@@ -1,0 +1,3 @@
+h1 候選人表態：編輯候選人表態
+= simple_form_for @candidate_standpoint, url: admin_candidate_standpoint_path(@candidate_standpoint), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }

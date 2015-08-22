@@ -1,0 +1,47 @@
+h1 政黨管理
+.btn
+  = link_to "新增政黨", new_admin_party_path
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th 編號
+    th width="129"  全名
+    th width="87"  縮寫
+    th width="98"  不分區預測人數
+    th width="314" 
+      | 黨旗圖片小
+      br
+      | 黨旗背景
+    th 操作
+  - num = 0
+  - @parties.each do |p|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="middle" width="38" = p.id
+        td align="center" = p.name
+        td align="center" = p.short_name
+        td align="center" = p.prediction
+        td align="center"
+          p
+            = image_tag(p.image, height: 50, width: 51, alt: "")
+          p
+            = image_tag(p.background, height: 60, width: 300, alt: "")
+        td align="center" width="96"
+          = link_to "編輯", edit_admin_party_path(p)
+          | ｜
+          = link_to "刪除", admin_party_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
+    - else
+      tr.even
+        td align="center" valign="middle" width="38" = p.id
+        td align="center" = p.name
+        td align="center" = p.short_name
+        td align="center" = p.prediction
+        td align="center" 
+          p
+            = image_tag(p.image, height: 50, width: 51, alt: "")
+          p
+            = image_tag(p.background, height: 60, width: 300, alt: "")
+        td align="center" width="96"
+          = link_to "編輯", edit_admin_party_path(p)
+          | ｜
+          = link_to "刪除", admin_party_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }

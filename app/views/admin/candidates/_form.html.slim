@@ -1,0 +1,76 @@
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th width="131" 姓名
+    td
+      = f.input :name, label: false, required: true, input_html: { class: 'input_14' }
+  tr
+    th 身分
+    td
+      p
+        - if @candidate.new_record?
+          = f.input :eight, as: :boolean, label: false, input_html: { checked: false }
+        - else
+          = f.input :eight, as: :boolean, label: false
+        | 第八屆現任立委，選區
+        = f.association :eight_constituency, label: false, label_method: :full_name, value_method: :id, include_blank: false
+        | ，
+        br/
+        | 所屬委員會
+        = f.association :committees, label: false, collection: Committee.all, input_html: { class: 'chosen-select' }
+      p
+        - if @candidate.new_record?
+          = f.input :nine, as: :boolean, label: false, input_html: { checked: false }
+        - else
+          = f.input :nine, as: :boolean, label: false
+        | 第九屆候選人，
+        = f.association :nine_constituency, label: false, label_method: :full_name, value_method: :id, include_blank: false
+        | ，
+        br/
+        | 不分區排序
+        = f.input :nine_position , label: false, required: true, input_html: { class: 'input_14' }
+        br/
+        | 競選號碼
+        = f.input :nine_number, label: false, required: true, input_html: { class: 'input_14' }
+  tr
+    th 照片
+    td
+      = f.input :image, as: :file, label: false, required: true
+      = f.input :image_cache, as: :hidden
+      = f.input :remove_image, as:  :boolean, label: '移除圖片'
+      = image_tag(@candidate.image_url, class: "issue-img") if @candidate.image?
+  tr
+    th 政黨
+    td
+      = f.association :party, label_method: :name, value_method: :id, include_blank: false
+  tr
+    th 性別
+    td
+      = f.input :gender, label: false, collection: [['男', 'male'], ['女', 'female'], ['其他', 'other']], include_blank: false
+  tr
+    th valign="top" 年齡
+    td
+      = f.input :age, label: false, required: true, input_html: { class: 'input_14' }
+  tr
+    th valign="top" 學歷
+    td
+      = f.cktext_area :education, label: false, required: true, input_html: { class: 'long-input' }
+  tr
+    th valign="top" 經歷
+    td
+      = f.cktext_area :experience, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
+  tr
+    th valign="top" 政見
+    td
+      = f.cktext_area :manifesto, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
+  tr
+    th valign="top"  想推的法案
+    td
+      = f.cktext_area :aimed_bill, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
+  tr
+    th valign="top" 最關心的議題
+    td
+      = f.cktext_area :aimed_issue, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
+.btn
+  - if @candidate.new_record?
+    = link_to "回上頁", admin_candidates_path, class: "back"
+  = f.submit '儲存', id: 'button', class: 'submit'

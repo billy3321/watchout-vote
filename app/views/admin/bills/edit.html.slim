@@ -1,0 +1,3 @@
+h1 人物表態管理：編輯法律提案
+= simple_form_for @bill, url: admin_bill_path(@bill), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }

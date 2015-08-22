@@ -1,0 +1,45 @@
+h1 政黨表態統計
+.btn
+  = link_to "新增統計", new_party_standpoint_path
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th 編號
+    th width="120"  政黨
+    th width="85"  議題
+    th width="93"  贊成
+    th width="73"  反對
+    th width="84"  放棄
+    th width="114"  沒投票/無表態
+    th 操作
+  - num = 0
+  - @party_standpoints.each do |p|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="top" width="20", = p.id
+        td align="center" = p.party.name
+        td align="center" = p.issue.name
+        td align="center" = p.agree
+        td align="center" = p.disagree
+        td align="center" = p.abstain
+        td align="center" = p.notvote
+        td align="center" width="145"
+          = link_to "編輯", edit_admin_party_standpoint_path(p)
+          | ｜
+          = link_to "刪除", admin_party_standpoint_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
+    - else
+      tr.even
+        td align="center" valign="top" width="20", = p.id
+        td align="center" = p.party.name
+        td align="center" = p.issue.name
+        td align="center" = p.agree
+        td align="center" = p.disagree
+        td align="center" = p.abstain
+        td align="center" = p.notvote
+        td align="center" width="145"
+          = link_to "編輯", edit_admin_party_standpoint_path(p)
+          | ｜
+          = link_to "刪除", admin_party_standpoint_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
+
+#page
+  = paginate @party_standpoints

@@ -1,0 +1,35 @@
+h1 人物表態管理
+.btn
+  = link_to "新增法律提案", new_admin_bills_path
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th 編號
+    th width="148"  姓名
+    th width="117"  日期
+    th width="291"  分類
+    th 操作
+  - num = 0
+  - @bills.each do |b|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="middle" width="65" = b.id
+        td align="center" = b.candidate.name
+        td align="center" = b.date.strftime('%Y-%m-%d')
+        td align="center" 法律提案
+        td align="center" width="155" 
+          = link_to "編輯", edit_admin_bills_path(b)
+          | ｜
+          = link_to "刪除", admin_bill_path(b), method: :delete, data: { confirm: '確認要刪除嗎？' }
+    - else
+      tr.even
+        td align="center" valign="middle" width="65" = b.id
+        td align="center" = b.candidate.name
+        td align="center" = b.date.strftime('%Y-%m-%d')
+        td align="center" 法律提案
+        td align="center" width="155" 
+          = link_to "編輯", edit_admin_bills_path
+          | ｜
+          = link_to "刪除", admin_bills_path(b), method: :delete, data: { confirm: '確認要刪除嗎？' }
+#page
+  = paginate @bills

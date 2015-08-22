@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: [:password, :registration]
   mount Ckeditor::Engine => '/ckeditor'
+  root 'static_pages#home'
+  match '/about',        to: 'static_pages#about',        via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,7 +17,25 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  namespace :admin do
+    root 'static_pages#home'
+    resources :issues do
+      resources :slides
+    end
+    resources :parties
+    resources :candidates
+    resources :party_standpoints
+    resources :candidate_standpoints
+    resources :bills
+    resources :interpellations
+    resources :votes
+    resources :questions
+    resources :promises
+    match 'slides/sort',  to: 'slides#sort',  via: 'put'
+    # resources :slides, except: [:show] do
+    #   
+    # end
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

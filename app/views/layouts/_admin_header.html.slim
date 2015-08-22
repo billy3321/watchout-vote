@@ -1,0 +1,23 @@
+#side_menu
+  .side_block
+    h4
+      = link_to "後台管理首頁", admin_root_path
+  .side_block
+    ul
+      li
+        = link_to "議題管理", admin_issues_path
+      li
+        = link_to "政黨表態統計", admin_party_standpoints_path
+      li
+        = link_to "候選人表態統計", admin_candidate_standpoints_path
+      li
+        = link_to "政黨管理", admin_parties_path
+      li
+        = link_to "候選人管理", admin_candidates_path
+        a href="people.html"  人物管理
+      li
+        = link_to "候選人表態管理", "#"
+      li
+        = link_to "候選人承諾書管理", admin_promises_path
+      li
+        = link_to "承諾書問題管理", admin_questions_path

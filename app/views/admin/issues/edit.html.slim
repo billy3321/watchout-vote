@@ -1,0 +1,3 @@
+h1 議題管理：編輯議題圖片
+= simple_form_for @issue, url: admin_issue_path(@issue), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }

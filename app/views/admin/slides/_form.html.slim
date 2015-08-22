@@ -1,0 +1,21 @@
+= f.hidden_field :issue_id, :value => @issue.id
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th width="109" 議題名稱
+    td colspan="3" width="681" 
+      p = @issue.name
+  tr
+    th 圖片
+    td colspan="3"
+      = f.input :image, as: :file, label: false, required: true
+      = f.input :image_cache, as: :hidden
+      = f.input :remove_image, as:  :boolean, label: '移除圖片'
+      = image_tag(@slide.image_url, class: "issue-img") if @slide.image?
+  tr
+    th valign="top"  圖片alt
+    td colspan="3"
+      = f.input :alt, label: false, required: true, input_html: { class: 'long-input' }
+.btn
+  - if @slide.new_record?
+    = link_to "回上頁", admin_issues_path, class: "back"
+  = f.submit '儲存', id: 'button', class: 'submit'

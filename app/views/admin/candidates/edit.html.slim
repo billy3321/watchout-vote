@@ -1,0 +1,3 @@
+h1 候選人管理：編輯候選人
+= simple_form_for @candidate, url: admin_candidate_path(@candidate), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }

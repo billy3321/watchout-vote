@@ -1,10 +1,10 @@
 class CreateSlides < ActiveRecord::Migration
   def change
     create_table :slides do |t|
-      t.references :issue, index: true, foreign_key: true
+      t.integer :issue_id
       t.string :image
       t.string :alt
-      t.integer :order
+      t.integer :position
     end
   end
 end

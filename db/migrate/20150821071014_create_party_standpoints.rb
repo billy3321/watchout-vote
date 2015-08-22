@@ -1,8 +1,8 @@
 class CreatePartyStandpoints < ActiveRecord::Migration
   def change
     create_table :party_standpoints do |t|
-      t.references :party, index: true, foreign_key: true
-      t.references :issue, index: true, foreign_key: true
+      t.integer :party_id
+      t.integer :issue_id
       t.float :agree
       t.float :disagree
       t.float :abstain

@@ -1,0 +1,38 @@
+h1 人物承諾管理
+.btn
+  = link_to "新增承諾", new_admin_promise_path
+table border="1" cellpadding="5" width="100%"
+  tr
+    th 編號
+    th width="110"  姓名
+    th width="155"  議題
+    th width="172"  承諾書答覆
+    th width="161"  立場統計分類
+    th 操作
+  - num = 0
+  - @promises.each do |p|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="middle" width="48" = p.id
+        td align="center" = p.candidate.name
+        td align="center" = p.issue.name
+        td align="center" = p.summary
+        td align="center" = p.decision
+        td align="center" width="116"
+          = link_to "編輯", edit_admin_promise_path(p)
+          | ｜
+          = link_to "刪除", admin_promise_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
+    - else
+      tr.even
+        td align="center" valign="middle" width="48" = p.id
+        td align="center" = p.candidate.name
+        td align="center" = p.issue.name
+        td align="center" = p.summary
+        td align="center" = p.decision
+        td align="center" width="116"
+          = link_to "編輯", edit_admin_promise_path(p)
+          | ｜
+          = link_to "刪除", admin_promise_path(p), method: :delete, data: { confirm: '確認要刪除嗎？' }
+#page
+  = paginate @promises

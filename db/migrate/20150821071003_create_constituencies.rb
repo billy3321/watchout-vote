@@ -2,7 +2,7 @@ class CreateConstituencies < ActiveRecord::Migration
   def change
     create_table :constituencies do |t|
       t.string :name
-      t.references :county
+      t.integer :county_id
       t.string :kind
     end
   end

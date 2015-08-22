@@ -1,0 +1,3 @@
+h1 政黨表態統計：編輯政黨表態
+= simple_form_for @party_standpoint, url: admin_party_standpoint_path(@party_standpoint), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }
