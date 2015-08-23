@@ -5,6 +5,8 @@ class CreateDms < ActiveRecord::Migration
       t.integer :issue_id
       t.string :file
       t.string :image
+
+      t.timestamps null: false
     end
   end
 end

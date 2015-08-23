@@ -6,7 +6,9 @@ class CreateParties < ActiveRecord::Migration
       t.string :abbreviation
       t.string :image
       t.string :background
-      t.integer :prediction
+      t.integer :prediction, default: 0
+
+      t.timestamps null: false
     end
   end
 end

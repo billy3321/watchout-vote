@@ -5,6 +5,9 @@ class CreateInterviews < ActiveRecord::Migration
       t.string :image
       t.text :description
       t.string :alt
+      t.date :date
+
+      t.timestamps null: false
     end
   end
 end

@@ -7,6 +7,8 @@ class CreateIssues < ActiveRecord::Migration
       t.string :ngo
       t.string :ngo_link
       t.boolean :published, default: false
+
+      t.timestamps null: false
     end
   end
 end

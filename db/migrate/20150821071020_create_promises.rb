@@ -7,7 +7,9 @@ class CreatePromises < ActiveRecord::Migration
       t.text :summary
       t.string :detail
       t.string :decision
-      t.datetime :date
+      t.date :date
+
+      t.timestamps null: false
     end
   end
 end

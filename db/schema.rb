@@ -17,45 +17,49 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
-    t.integer  "candidate_id"
-    t.integer  "issue_id"
-    t.text     "content"
-    t.text     "summary"
-    t.string   "detail"
-    t.string   "decision"
-    t.string   "url"
-    t.datetime "date"
+    t.integer "candidate_id"
+    t.integer "issue_id"
+    t.text    "content"
+    t.text    "summary"
+    t.string  "detail"
+    t.string  "decision"
+    t.string  "url"
+    t.date    "date"
   end
 
   create_table "candidate_standpoints", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "issue_id"
-    t.float   "agree"
-    t.float   "disagree"
-    t.float   "abstain"
-    t.float   "notvote"
+    t.integer  "candidate_id"
+    t.integer  "issue_id"
+    t.float    "agree"
+    t.float    "disagree"
+    t.float    "abstain"
+    t.float    "notvote"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "candidates", force: :cascade do |t|
-    t.string  "name"
-    t.string  "image"
-    t.integer "party_id"
-    t.string  "gender"
-    t.integer "age"
-    t.text    "education"
-    t.text    "experience"
-    t.text    "manifesto"
-    t.text    "aimed_bill"
-    t.text    "aimed_issue"
-    t.integer "legislator_no"
-    t.boolean "withdraw",              default: false
-    t.boolean "eight",                 default: false
-    t.integer "eight_constituency_id"
-    t.boolean "nine",                  default: false
-    t.integer "nine_constituency_id"
-    t.integer "nine_position"
-    t.integer "nine_number"
-    t.integer "target"
+    t.string   "name"
+    t.string   "image"
+    t.integer  "party_id"
+    t.string   "gender"
+    t.integer  "age"
+    t.text     "education"
+    t.text     "experience"
+    t.text     "manifesto"
+    t.text     "aimed_bill"
+    t.text     "aimed_issue"
+    t.integer  "legislator_no"
+    t.boolean  "withdraw",              default: false
+    t.boolean  "eight",                 default: false
+    t.integer  "eight_constituency_id"
+    t.boolean  "nine",                  default: false
+    t.integer  "nine_constituency_id"
+    t.integer  "nine_position"
+    t.integer  "nine_number"
+    t.integer  "target"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "candidates_committees", id: false, force: :cascade do |t|
@@ -92,7 +96,9 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.integer  "record_id"
     t.string   "record_type"
     t.text     "content"
-    t.datetime "date"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "clarifies", ["record_id", "record_type"], name: "index_clarifies_on_record_id_and_record_type", unique: true, using: :btree
@@ -118,10 +124,12 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   end
 
   create_table "dms", force: :cascade do |t|
-    t.string  "name"
-    t.integer "issue_id"
-    t.string  "file"
-    t.string  "image"
+    t.string   "name"
+    t.integer  "issue_id"
+    t.string   "file"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dms_parties", id: false, force: :cascade do |t|
@@ -132,48 +140,57 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   add_index "dms_parties", ["dm_id", "party_id"], name: "index_dms_parties_on_dm_id_and_party_id", unique: true, using: :btree
 
   create_table "interpellations", force: :cascade do |t|
-    t.integer  "candidate_id"
-    t.integer  "issue_id"
-    t.text     "content"
-    t.text     "summary"
-    t.string   "detail"
-    t.string   "decision"
-    t.string   "url"
-    t.datetime "date"
+    t.integer "candidate_id"
+    t.integer "issue_id"
+    t.text    "content"
+    t.text    "summary"
+    t.string  "detail"
+    t.string  "decision"
+    t.string  "url"
+    t.date    "date"
   end
 
   create_table "interviews", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.string  "image"
-    t.text    "description"
-    t.string  "alt"
+    t.integer  "candidate_id"
+    t.string   "image"
+    t.text     "description"
+    t.string   "alt"
+    t.date     "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "issues", force: :cascade do |t|
-    t.string  "name"
-    t.string  "image"
-    t.text    "description"
-    t.string  "ngo"
-    t.string  "ngo_link"
-    t.boolean "published",   default: false
+    t.string   "name"
+    t.string   "image"
+    t.text     "description"
+    t.string   "ngo"
+    t.string   "ngo_link"
+    t.boolean  "published",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "parties", force: :cascade do |t|
-    t.string  "name"
-    t.string  "short_name"
-    t.string  "abbreviation"
-    t.string  "image"
-    t.string  "background"
-    t.integer "prediction"
+    t.string   "name"
+    t.string   "short_name"
+    t.string   "abbreviation"
+    t.string   "image"
+    t.string   "background"
+    t.integer  "prediction",   default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "party_standpoints", force: :cascade do |t|
-    t.integer "party_id"
-    t.integer "issue_id"
-    t.float   "agree"
-    t.float   "disagree"
-    t.float   "abstain"
-    t.float   "notvote"
+    t.integer  "party_id"
+    t.integer  "issue_id"
+    t.float    "agree"
+    t.float    "disagree"
+    t.float    "abstain"
+    t.float    "notvote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "promises", force: :cascade do |t|
@@ -183,21 +200,27 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.text     "summary"
     t.string   "detail"
     t.string   "decision"
-    t.datetime "date"
+    t.date     "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string  "title"
-    t.string  "description"
-    t.text    "content"
-    t.integer "issue_id"
+    t.string   "title"
+    t.string   "description"
+    t.text     "content"
+    t.integer  "issue_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "slides", force: :cascade do |t|
-    t.integer "issue_id"
-    t.string  "image"
-    t.string  "alt"
-    t.integer "position"
+    t.integer  "issue_id"
+    t.string   "image"
+    t.string   "alt"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -222,14 +245,14 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "candidate_id"
-    t.integer  "issue_id"
-    t.text     "content"
-    t.text     "summary"
-    t.string   "detail"
-    t.string   "decision"
-    t.string   "url"
-    t.datetime "date"
+    t.integer "candidate_id"
+    t.integer "issue_id"
+    t.text    "content"
+    t.text    "summary"
+    t.string  "detail"
+    t.string  "decision"
+    t.string  "url"
+    t.date    "date"
   end
 
 end

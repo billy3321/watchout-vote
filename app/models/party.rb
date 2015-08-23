@@ -7,4 +7,9 @@ class Party < ActiveRecord::Base
   has_many :party_standpoint
   mount_uploader :image, ImageUploader
   mount_uploader :background, ImageUploader
+  validates_presence_of :name, message: '請輸入全名'
+  validates_presence_of :short_name, message: '請輸入中文縮寫'
+  validates_presence_of :abbreviation, message: '請輸入英文縮寫'
+  validates_presence_of :image, message: '請上傳小圖'
+  validates_presence_of :background, message: '請上傳背景圖片'
 end

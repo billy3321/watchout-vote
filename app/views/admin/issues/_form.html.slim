@@ -1,10 +1,10 @@
 table border="1" cellpadding="5" width="100%" 
   tr
-    th width="131" 議題名稱
+    th width="131" ＊議題名稱
     td width="281" 
       p
         = f.input :name, label: false, required: true, input_html: { class: 'long-input' }
-    th width="99"  是否公開
+    th width="99" 是否公開
     td width="279" 
       p
         - if @issue.new_record?
@@ -14,14 +14,14 @@ table border="1" cellpadding="5" width="100%"
           = f.input :published, as: :boolean, label: false
           | 公開
   tr
-    th 議題主圖片
+    th ＊議題主圖片
     td colspan="3" 
       = f.input :image, as: :file, label: false, required: true
       = f.input :image_cache, as: :hidden
       = f.input :remove_image, as:  :boolean, label: '移除圖片'
       = image_tag(@issue.image_url, class: "issue-img") if @issue.image?
   tr
-    th 議題短描述
+    th ＊議題短描述
     td colspan="3"
       = f.cktext_area :description, label: false, required: true, input_html: { class: 'long-input' }
   tr

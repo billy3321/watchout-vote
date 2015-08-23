@@ -20,6 +20,8 @@ class CreateCandidates < ActiveRecord::Migration
       t.integer :nine_position
       t.integer :nine_number
       t.integer :target, polymorphic: true
+
+      t.timestamps null: false
     end
   end
 end

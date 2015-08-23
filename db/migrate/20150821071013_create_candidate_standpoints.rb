@@ -7,6 +7,8 @@ class CreateCandidateStandpoints < ActiveRecord::Migration
       t.float :disagree
       t.float :abstain
       t.float :notvote
+
+      t.timestamps null: false
     end
   end
 end

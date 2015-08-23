@@ -1,10 +1,10 @@
 table border="1" cellpadding="5" width="100%" 
   tr
-    th width="131" 姓名
+    th width="131" ＊姓名
     td
       = f.input :name, label: false, required: true, input_html: { class: 'input_14' }
   tr
-    th 身分
+    th ＊身分
     td
       p
         - if @candidate.new_record?
@@ -32,14 +32,14 @@ table border="1" cellpadding="5" width="100%"
         | 競選號碼
         = f.input :nine_number, label: false, required: true, input_html: { class: 'input_14' }
   tr
-    th 照片
+    th ＊照片
     td
       = f.input :image, as: :file, label: false, required: true
       = f.input :image_cache, as: :hidden
       = f.input :remove_image, as:  :boolean, label: '移除圖片'
       = image_tag(@candidate.image_url, class: "issue-img") if @candidate.image?
   tr
-    th 政黨
+    th ＊政黨
     td
       = f.association :party, label: false, label_method: :name, value_method: :id, include_blank: false
   tr

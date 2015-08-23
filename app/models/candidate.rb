@@ -7,4 +7,7 @@ class Candidate < ActiveRecord::Base
   has_and_belongs_to_many :committees, -> { uniq }
   has_and_belongs_to_many :dms, -> { uniq }
   mount_uploader :image, ImageUploader
+  validates_presence_of :name, message: '請填寫姓名'
+  validates_presence_of :image, message: '請上傳照片'
+  validates_presence_of :party_id, message: '請選擇政黨'
 end

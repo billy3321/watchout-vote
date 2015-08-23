@@ -5,6 +5,8 @@ class CreateSlides < ActiveRecord::Migration
       t.string :image
       t.string :alt
       t.integer :position
+
+      t.timestamps null: false
     end
   end
 end

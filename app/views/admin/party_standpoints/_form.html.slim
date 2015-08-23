@@ -1,29 +1,29 @@
 table border="1" cellpadding="5" width="100%" 
   tr
-    th width="131" 政黨
+    th width="131" ＊政黨
     td
       p
         = f.association :party, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
-    th 議題
+    th ＊議題
     td
       = f.association :issue, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
-    th 贊成
+    th ＊贊成
     td
-      = f.input :agree, label: false, required: true, input_html: { class: 'input_14' }
+      = f.input :agree, label: false, required: true, input_html: { class: 'input_14', min: 0 }
   tr
-    th 反對
+    th ＊反對
     td
-      = f.input :disagree, label: false, required: true, input_html: { class: 'input_14' }
+      = f.input :disagree, label: false, required: true, input_html: { class: 'input_14', min: 0 }
   tr
-    th valign="top" 放棄
+    th valign="top" ＊放棄
     td
-      = f.input :abstain, label: false, required: true, input_html: { class: 'input_14' }
+      = f.input :abstain, label: false, required: true, input_html: { class: 'input_14', min: 0 }
   tr
-    th valign="top"  沒投票/無表態
+    th valign="top" ＊沒投票/無表態
     td
-      = f.input :notvote, label: false, required: true, input_html: { class: 'input_14' }
+      = f.input :notvote, label: false, required: true, input_html: { class: 'input_14', min: 0 }
 .btn
   - if @party_standpoint.new_record?
     = link_to "回上頁", admin_party_standpoints_path, class: "back"

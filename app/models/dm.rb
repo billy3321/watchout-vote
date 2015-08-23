@@ -3,4 +3,6 @@ class Dm < ActiveRecord::Base
   has_and_belongs_to_many :parties, -> { uniq }
   has_and_belongs_to_many :candidates, -> { uniq }
   mount_uploader :image, ImageUploader
+  validates_presence_of :name, '請輸入檔案名稱'
+  validates_presence_of :file, '請輸入檔案位置'
 end

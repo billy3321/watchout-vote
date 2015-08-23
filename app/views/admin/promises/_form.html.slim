@@ -1,26 +1,26 @@
 table border="1" cellpadding="5" width="100%" 
   tr
-    th width="141" 候選人姓名
+    th width="141" ＊候選人姓名
     td width="677" 
       = f.association :candidate, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
-    th 發言日期
+    th ＊發言日期
     td
       = f.input :date, as: :string, label: false, input_html: { class: "datetimepicker input_14" }, required: true
   tr
-    th 承諾書問題
+    th ＊承諾書問題
     td
       = f.association :question, label: false, label_method: :title, value_method: :id, include_blank: false
   tr
-    th 承諾書答覆
+    th ＊承諾書答覆
     td
       = f.cktext_area :answer, label: false, required: true, input_html: { class: 'long-input' }
   tr
-    th valign="top" 立場判斷
+    th valign="top" ＊立場判斷
     td
       = f.input :summary, label: false, required: true, input_html: { class: 'input_14' }
   tr
-    th valign="top" 立場統計分類
+    th valign="top" ＊立場統計分類
     td
       = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote']], input_html: { class: 'form-control' }, include_blank: false   
 .btn

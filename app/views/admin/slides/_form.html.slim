@@ -5,7 +5,7 @@ table border="1" cellpadding="5" width="100%"
     td colspan="3" width="681" 
       p = @issue.name
   tr
-    th 圖片
+    th ＊圖片
     td colspan="3"
       = f.input :image, as: :file, label: false, required: true
       = f.input :image_cache, as: :hidden
@@ -14,7 +14,7 @@ table border="1" cellpadding="5" width="100%"
   tr
     th valign="top"  圖片alt
     td colspan="3"
-      = f.input :alt, label: false, required: true, input_html: { class: 'long-input' }
+      = f.input :alt, label: false, input_html: { class: 'long-input' }
 .btn
   - if @slide.new_record?
     = link_to "回上頁", admin_issues_path, class: "back"

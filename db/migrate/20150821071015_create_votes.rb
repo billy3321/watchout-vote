@@ -8,7 +8,7 @@ class CreateVotes < ActiveRecord::Migration
       t.string :detail
       t.string :decision
       t.string :url
-      t.datetime :date
+      t.date :date
     end
   end
 end
