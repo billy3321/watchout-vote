@@ -6,12 +6,22 @@ class ApplicationController < ActionController::Base
     admin_root_path
   end
 
+  layout :layout_by_resource
+
   private
 
   def require_admin
     if user_signed_in? and not current_user.admin?
       sign_out current_user
       redirect_to '/'
+    end
+  end
+
+  def layout_by_resource
+    if devise_controller?
+      "admin"
+    else
+      "application"
     end
   end
 

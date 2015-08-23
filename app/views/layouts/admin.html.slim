@@ -7,7 +7,7 @@ html xmlns="http://www.w3.org/1999/xhtml"
     = javascript_include_tag 'admin', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
     = display_meta_tags(admin_meta_tags)
-  - unless ['admin/sessions'].include?(params[:controller])
+  - unless ['devise/sessions'].include?(params[:controller])
     body
       #all
         #content_wrap

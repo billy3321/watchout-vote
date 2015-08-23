@@ -33,13 +33,17 @@ table border="1" cellpadding="5" width="100%"
   - unless @bill.new_record?
     = f.simple_fields_for :clarify do |c|
       tr
-        th valign="top"  立委澄清說明
+        th valign="top" 立委澄清說明
         td
           = c.cktext_area :content, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45 }
       tr
-        th valign="top"  立委澄清日期
+        th valign="top" 立委澄清日期
         td
           = c.input :date, as: :string, label: false, input_html: { class: "datetimepicker input_14" }, required: true
+      tr
+        th valign="top" 刪除澄清
+        td
+          = f.input :_destroy, as: :boolean, input_html: { checked: false }, label: false
   tr
     th valign="top" ＊原始來源記錄url
     td
