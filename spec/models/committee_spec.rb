@@ -1,5 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Committee, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Committee do
+  it "#factory_create_success" do
+    expect {
+      FactoryGirl.create :committee
+    }.to change { Committee.count }.by(1)
+  end
 end

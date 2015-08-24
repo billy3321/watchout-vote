@@ -52,6 +52,8 @@ zh-TW:
               blank: "必填"
             email:
               blank: "必填"
+      messages:
+        record_invalid: "Record 錯誤"
   recaptcha:
     errors:
       incorrect-captcha-sol: "驗證碼輸入錯誤。"

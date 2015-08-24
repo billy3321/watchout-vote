@@ -8,5 +8,5 @@ class Promise < ActiveRecord::Base
   validates_presence_of :date, message: '請填寫承諾日期'
   validates_presence_of :answer, message: '請填寫承諾書內容'
   validates_presence_of :summary, message: '請總結立場'
-  validates_presence_of :dicision, message: '請選擇承諾狀況'
+  validates_presence_of :decision, message: '請選擇承諾狀況'
 end

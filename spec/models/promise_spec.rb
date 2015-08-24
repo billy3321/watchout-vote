@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Promise, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "#factory_create_success" do
+    expect {
+      FactoryGirl.create :promise
+    }.to change { Promise.count }.by(1)
+  end
 end

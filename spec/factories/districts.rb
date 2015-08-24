@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :district do
-    name "MyString"
-constituency nil
+    constituency { FactoryGirl.create(:constituency) }
+    sequence(:name)  { |n| "District #{n}" }
   end
-
 end

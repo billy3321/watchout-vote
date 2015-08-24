@@ -69,7 +69,7 @@ class Admin::SlidesController < Admin::BaseController
   end
 
   def sort
-    puts slide_params[:order]
+    # puts slide_params[:order]
     slide_params[:order].each do |key, value|
       Slide.find(value[:id]).update_attribute(:position, value[:position])
     end
