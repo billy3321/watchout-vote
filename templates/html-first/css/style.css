@@ -437,3 +437,21 @@ ul{
 	font-size: 20px;
 	line-height: 1.8em;
 }
+.say-sort-tag a{
+	display: block;
+	border-radius: 10px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: #D6A051;;
+	color: #fff;
+	padding: 10px;
+}
+.say-sort-tag a:hover{
+	text-decoration: none;
+}
+.say-sort-tag a.current{
+	background: #93631d;
+}
+.say-sort-tag li{
+	margin: 0 3px 0 0;
+}
