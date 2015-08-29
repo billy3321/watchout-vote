@@ -13,7 +13,7 @@ describe "Admin/Vote" do
       content: "new_vote_content",
       description: "new_vote_descriptioin",
       summary: "new_vote_summary",
-      decision: "agree",
+      decision: "agree"
     }
   end
 

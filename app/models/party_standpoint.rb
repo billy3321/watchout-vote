@@ -7,4 +7,19 @@ class PartyStandpoint < ActiveRecord::Base
   validates_presence_of :disagree, message: '請填寫反對比例'
   validates_presence_of :abstain, message: '請填寫棄權比例'
   validates_presence_of :notvote, message: '請填寫未投票比例'
+  validates_presence_of :decision, message: '請確定政黨傾向'
+
+  scope :agree, -> { where(decision: "agree") }
+  scope :disagree, -> { where(decision: "disagree") }
+  scope :abstain, -> { where(decision: "abstain") }
+  scope :notvote, -> { where(decision: "notvote") }
+  scope :unknown, -> { where({ decision: ["abstain", "notvote"]}) }
+
+  def self.get_standpoint(party, issue)
+    where("party_id = ? AND issue_id = ?", party.id, issue.id).first
+  end
+
+  def self.get_issue(issue)
+    includes(:parties).where(issue_id: issue.id).first
+  end
 end

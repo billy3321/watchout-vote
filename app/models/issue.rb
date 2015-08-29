@@ -13,4 +13,6 @@ class Issue < ActiveRecord::Base
   validates_presence_of :image, message: '請上傳圖片'
   validates_presence_of :description, message: '請輸入議題描述'
   # accepts_nested_attributes_for :slides, reject_if: :all_blank, allow_destroy: true
+
+  scope :published, -> { where(published: true) }
 end

@@ -17,6 +17,26 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :issues, only: :show
+  resources :parties, only: :show do
+    match 'issues', to: 'parties#issues', via: 'get', as: 'issues'
+    match 'issues/:id', to: 'parties#issue', via: 'get', as: 'issue'
+    match 'issues/:id/bills', to: 'parties#bills', via: 'get', as: 'issue_bills'
+    match 'issues/:id/interpellations', to: 'parties#interpellations', via: 'get', as: 'issue_interpellations'
+    match 'issues/:id/votes', to: 'parties#votes', via: 'get', as: 'issue_votes'
+  end
+  resources :candidates, only: :show do
+    match 'issues', to: 'candidates#issues', via: 'get', as: 'issues'
+    match 'issues/:id', to: 'candidates#issue', via: 'get', as: 'issue'
+    match 'issues/:id/bills', to: 'candidates#bills', via: 'get', as: 'issue_bills'
+    match 'issues/:id/interpellations', to: 'candidates#interpellations', via: 'get', as: 'issue_interpellations'
+    match 'issues/:id/votes', to: 'candidates#votes', via: 'get', as: 'issue_votes'
+  end
+  resources :bills, only: :show
+  resources :interpellations, only: :show
+  resources :votes, only: :show
+  match '/emails', to: 'emails#create',  via: 'post'
+  match '/emails', to: 'emails#destroy', via: 'delete'
   namespace :admin do
     root 'static_pages#home'
     resources :issues do

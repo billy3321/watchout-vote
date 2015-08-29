@@ -13,7 +13,7 @@ describe "Admin/Bill" do
       content: "new_bill_content",
       description: "new_bill_descriptioin",
       summary: "new_bill_summary",
-      decision: "agree",
+      decision: "agree"
     }
   end
 

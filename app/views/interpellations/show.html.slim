@@ -1,0 +1,23 @@
+.inner-title
+  h1.ititle = @interpellation.candidate.name
+  ul.inner-tag
+    li
+      = link_to "議題表態", candidate_issues_path(@interpellation.candidate, @interpellation.issue), class: "current"
+    li
+      = link_to "基本資料", candidate_path(@interpellation.candidate) 
+  ul.issue-tag
+    - @candidate_standpoints.each do |c|
+      li
+        - if c.issue == @interpellation.issue
+          = link_to c.issue.name, candidate_issue_path(@candidate, c.issue), class: "current"
+        - else
+          = link_to c.issue.name, candidate_issue_path(@candidate, c.issue)
+
+.say-content-wrap
+  h2.say-title = @interpellation.summary
+  = link_to "資料來源", @interpellation.url, target: "_blank", class: "source-link"
+  h3.say-sort
+    | 立院發言
+    span = @interpellation.date.strftime('%Y-%m-%d')
+  .say-txt
+    = @interpellation.content.try(:html_safe)

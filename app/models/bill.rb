@@ -12,4 +12,15 @@ class Bill < ActiveRecord::Base
   validates_presence_of :summary, message: '請填寫立場判斷'
   validates_presence_of :decision, message: '請選擇立場'
   validates_presence_of :url, message: '請填寫來源網址'
+
+  scope :date_asc, -> { order("date ASC").order("created_at ASC") }
+  scope :date_desc, -> { order("date DESC").order("created_at DESC") }
+
+  def self.get_party_bill(party, issue)
+    joins(:candidate).where("candidates.party_id = ? AND issue_id = ?", party.id, issue.id)
+  end
+
+  def self.get_candidate_bill(candidate, issue)
+    includes(:candidate).where("candidate_id = ? AND issue_id = ?", candidate.id, issue.id)
+  end
 end

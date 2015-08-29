@@ -3,10 +3,11 @@ class CreatePartyStandpoints < ActiveRecord::Migration
     create_table :party_standpoints do |t|
       t.integer :party_id
       t.integer :issue_id
-      t.float :agree
-      t.float :disagree
-      t.float :abstain
-      t.float :notvote
+      t.integer :agree
+      t.integer :disagree
+      t.integer :abstain
+      t.integer :notvote
+      t.string :decision
 
       t.timestamps null: false
     end

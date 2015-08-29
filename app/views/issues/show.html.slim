@@ -1,0 +1,63 @@
+- if @issue.slides.any?
+  #banner-fade
+    /! start Basic Jquery Slider
+    ul.bjqs
+      - @issue.slides.each do |s|
+        li
+          = image_tag(s.image, alt: s.alt)
+
+.block
+  h1.ititle = @issue.description
+  .anser-chose
+    a.color-btn#agree href="#"  Yes
+    a.color-btn#disagree href="#"  No
+.block#result
+  h2.ititle 
+  .analyze-party.analyze-block
+    .yes-block
+      h3 贊成門檻下修
+      - @party_standpoints.agree.each do |p|
+        .party-block.party-issue-ana
+          = link_to party_path(p.party) do
+            h4 = p.party.short_name
+            - p.agree.times do
+              span.yes-s
+            - p.disagree.times do
+              span.no-s
+    .no-block
+      h3 反對門檻下修
+      - @party_standpoints.disagree.each do |p|
+        .party-block.party-issue-ana
+          = link_to party_path(p.party) do
+            h4 = p.party.short_name
+            - p.agree.times do
+              span.yes-s
+            - p.disagree.times do
+              span.no-s
+
+  .analyze-people.analyze-block
+    .yes-block
+      h3 贊成門檻下修
+      ul.people-list.people-three
+        - @candidate_standpoints.agree.each do |c|
+          li
+            = link_to candidate_path(c.candidate) do
+              = image_tag(c.candidate.image, alt: "")
+              h4.name02 = c.candidate.name
+    .no-block
+      h3 反對門檻下修
+      ul.people-list.people-three
+        - @candidate_standpoints.disagree.each do |c|
+          li
+            = link_to candidate_path(c.candidate) do
+              = image_tag(c.candidate.image, alt: "")
+              h4.name02 = c.candidate.name
+    .noanswer-block
+      h3 應表態而未表態表態
+      ul.people-list.people-three
+        - @candidate_standpoints.unknown.each do |c|
+          li
+            = link_to candidate_path(c.candidate) do
+              = image_tag(c.candidate.image, alt: "")
+              h4.name02 = c.candidate.name
+

@@ -1,0 +1,12 @@
+.inner-title
+  h1.ititle = @party.name
+  ul.inner-tag
+    li
+      = link_to "議題表態", party_issues_path(@party)
+    li
+      = link_to "基本資料", party_path(@party), class: "current"
+.info-content-wrap
+  h2.ctitle 經歷
+  .info-content = @party.experience.try(:html_safe)
+  h2.ctitle 黨產
+  .info-content = @party.property.try(:html_safe)

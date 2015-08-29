@@ -13,7 +13,7 @@ describe "Admin/Interpellation" do
       content: "new_interpellation_content",
       description: "new_interpellation_descriptioin",
       summary: "new_interpellation_summary",
-      decision: "agree",
+      decision: "agree"
     }
   end
 

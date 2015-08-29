@@ -7,6 +7,8 @@ class CreateParties < ActiveRecord::Migration
       t.string :image
       t.string :background
       t.integer :prediction, default: 0
+      t.text :experience
+      t.text :property
 
       t.timestamps null: false
     end

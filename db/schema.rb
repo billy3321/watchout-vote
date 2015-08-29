@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821172158) do
+ActiveRecord::Schema.define(version: 20150829103901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "candidate_standpoints", force: :cascade do |t|
     t.integer  "candidate_id"
     t.integer  "issue_id"
-    t.float    "agree"
-    t.float    "disagree"
-    t.float    "abstain"
-    t.float    "notvote"
+    t.integer  "agree"
+    t.integer  "disagree"
+    t.integer  "abstain"
+    t.integer  "notvote"
+    t.string   "decision"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -141,6 +142,20 @@ ActiveRecord::Schema.define(version: 20150821172158) do
 
   add_index "dms_parties", ["dm_id", "party_id"], name: "index_dms_parties_on_dm_id_and_party_id", unique: true, using: :btree
 
+  create_table "emails", force: :cascade do |t|
+    t.string   "email",                       default: "", null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "delete_confirmation_token"
+    t.datetime "delete_confirmation_sent_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "emails", ["confirmation_token"], name: "index_emails_on_confirmation_token", unique: true, using: :btree
+  add_index "emails", ["delete_confirmation_token"], name: "index_emails_on_delete_confirmation_token", unique: true, using: :btree
+
   create_table "interpellations", force: :cascade do |t|
     t.integer "candidate_id"
     t.integer "committee_id"
@@ -167,7 +182,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "issues", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
-    t.text     "description"
+    t.string   "description"
     t.string   "ngo"
     t.string   "ngo_link"
     t.boolean  "published",   default: false
@@ -182,6 +197,8 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string   "image"
     t.string   "background"
     t.integer  "prediction",   default: 0
+    t.text     "experience"
+    t.text     "property"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -189,10 +206,11 @@ ActiveRecord::Schema.define(version: 20150821172158) do
   create_table "party_standpoints", force: :cascade do |t|
     t.integer  "party_id"
     t.integer  "issue_id"
-    t.float    "agree"
-    t.float    "disagree"
-    t.float    "abstain"
-    t.float    "notvote"
+    t.integer  "agree"
+    t.integer  "disagree"
+    t.integer  "abstain"
+    t.integer  "notvote"
+    t.string   "decision"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

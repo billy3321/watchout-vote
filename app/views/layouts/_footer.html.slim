@@ -1,0 +1,28 @@
+.booking
+  .mail-form
+    p 有興趣收到本站每月更新通知嗎？請留E-mail
+    = simple_form_for @email, url: emails_path, method: :post do |f|
+      = f.input :email, as: :email, label: false, required: true, input_html: { class: 'mail-input' }
+      button type="submit" class="sbtn" 訂閱
+      button name="_method" type="submit" value="delete" class="sbtn" 取消訂閱
+
+    .info-txt
+      | 依據個資法，關於個人資料蒐集、處理及利用聲明：
+      br/
+      | 使用本電子報訂閱視為瞭解及同意沃草公司進行您個人資料（email資訊）之蒐集、處理及利用，除非取得您的同意或其他法令之特別規定，絕不會將您的個人資料提供給第三方或使用於電子報訂閱以外之其它用途。您隨時可來信取消此訂閱服務，經取消訂閱後，相關資料立即從訂閱資料庫中刪除。
+.link-cc
+  nav.footer-nav
+    ul
+      li
+        = link_to "關於立委求職中", about_path
+      li
+        = link_to "資料來源說明", "#"
+      li
+        = link_to "著作權聲明", "#"
+      li
+        = link_to "回首頁", root_path
+  .contact-cc
+    | 本網站採 CC-BY-NC-SA 授權
+    br/
+    | 網站使用問題與合作建議，請聯絡：
+    = mail_to "wevote@watchout.tw"

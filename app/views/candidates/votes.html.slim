@@ -1,0 +1,42 @@
+.inner-title
+  h1.ititle = @candidate.name
+  ul.inner-tag
+    li
+      = link_to "議題表態", candidate_issues_path(@candidate), class: "current"
+    li
+      = link_to "基本資料", candidate_path(@candidate)
+  ul.issue-tag
+    - @candidate_standpoints.each do |c|
+      li
+        - if c.issue == @issue
+          = link_to c.issue.name, candidate_issue_path(@candidate, c.issue), class: "current"
+        - else
+          = link_to c.issue.name, candidate_issue_path(@candidate, c.issue)
+.analyze-block.people-issue-ana
+  .issue-ana-block.inner-ana
+    - @candidate_standpoint.agree.times do
+      span.yes-s
+    - @candidate_standpoint.disagree.times do
+      span.no-s
+.say-list
+  ul.say-sort-tag
+    li
+      = link_to "發言", candidate_issue_interpellations_path(@candidate, @issue)
+    li
+      = link_to "提案", candidate_issue_bills_path(@candidate, @issue)
+    li
+      = link_to "表決", candidate_issue_votes_path(@candidate, @issue), class: "current"
+  .say-txt-list-wrap
+    .say-txt-wrap
+      - @votes.each do |v|
+        h2
+          | 立院表決
+          span = v.date.strftime('%Y-%m-%d')
+        = link_to vote_path(v), class: "say-txt" do
+          = v.candidate.name
+          | ：
+          = v.content.try(:html_safe)
+        em.say-tag = v.summary
+        = link_to "資料來源", v.url, class: "source-link", target: "_blank"
+  #page
+    = paginate @votes

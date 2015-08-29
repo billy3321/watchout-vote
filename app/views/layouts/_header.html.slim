@@ -1,0 +1,9 @@
+.logo
+  header.logo-name
+    em
+      = link_to "立委求職中", root_path
+nav
+  ul.nav-bar
+    - @issues.each do |i|
+      li
+        = link_to i.name, issue_path(i)

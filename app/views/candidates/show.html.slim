@@ -1,0 +1,22 @@
+.inner-title
+  h1.ititle = @candidate.name
+  ul.inner-tag
+    li
+      = link_to "議題表態", candidate_issues_path(@candidate)
+    li
+      = link_to "基本資料", candidate_path(@candidate), class: "current"
+.info-content-wrap
+  h2.ctitle 沃草人物誌-立委候選人系列
+  .info-banner
+  h2.ctitle 最想推行的3 個法案
+  .info-content
+    = @candidate.aimed_bill.try(:html_safe)
+  h2.ctitle 最關注的3 個在地議題
+  .info-content
+    = @candidate.aimed_issue.try(:html_safe)
+  h2.ctitle 學歷
+  .info-content
+    = @candidate.education.try(:html_safe)
+  h2.ctitle 經歷
+  .info-content
+    = @candidate.experience.try(:html_safe)

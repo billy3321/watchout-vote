@@ -14,4 +14,15 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require bjqs-1.3.min
 //= require_tree .
+
+jQuery(document).ready(function($) {
+
+  $('#banner-fade').bjqs({
+    height      : 638,
+    width       : 1500,
+    responsive  : true
+  });
+
+});

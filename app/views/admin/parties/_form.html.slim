@@ -29,6 +29,14 @@ table border="1" cellpadding="5" width="100%"
       = f.input :background_cache, as: :hidden
       = f.input :remove_background, as:  :boolean, label: '移除圖片'
       = image_tag(@party.background_url) if @party.background?
+  tr
+    th valign="top" 大事紀
+    td
+      = f.cktext_area :experience, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
+  tr
+    th valign="top" 黨產
+    td
+      = f.cktext_area :property, label: false, required: true, input_html: { class: 'long-input', rows: 5, cols: 45}
 .btn
   - if @party.new_record?
     = link_to "回上頁", admin_parties_path, class: "back"

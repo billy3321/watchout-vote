@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   protect_from_forgery with: :null_session, unless: -> { request.format.json? }
+  before_filter :set_issues, :set_email
   # For APIs, you may want to use :null_session instead.
   def after_sign_in_path_for(resource)
     admin_root_path
@@ -9,6 +10,14 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   private
+
+  def set_issues
+    @issues = Issue.all
+  end
+
+  def set_email
+    @email = Email.new
+  end
 
   def require_admin
     if user_signed_in? and not current_user.admin?

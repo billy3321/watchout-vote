@@ -1,0 +1,16 @@
+.inner-title
+  h1.ititle = @party.name
+  ul.inner-tag
+    li
+      = link_to "議題表態", party_issues_path(@party), class: "current"
+    li
+      = link_to "基本資料", party_path(@party)
+.analyze-block.party-issue-ana
+  - @party.party_standpoints.each do |p|
+    .issue-ana-block
+      = link_to party_issue_path(@party, p.issue) do
+        h2 = p.issue.name
+        - p.agree.times do
+          span.yes-s
+        - p.disagree.times do
+          span.no-s

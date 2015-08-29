@@ -2,10 +2,11 @@ FactoryGirl.define do
   factory :candidate_standpoint do
     candidate { FactoryGirl.create(:candidate) }
     issue { FactoryGirl.create(:issue) }
-    agree 1.5
-    disagree 1.5
-    abstain 1.5
-    notvote 1.5
+    agree 15
+    disagree 15
+    abstain 15
+    notvote 15
+    decision { ["agree", "disagree", "abstain", "notvote"].sample }
   end
 
 end
