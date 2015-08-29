@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
 
   create_table "bills", force: :cascade do |t|
     t.integer "candidate_id"
+    t.integer "committee_id"
     t.integer "issue_id"
     t.text    "content"
     t.text    "summary"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string  "decision"
     t.string  "url"
     t.date    "date"
+    t.string  "category"
   end
 
   create_table "candidate_standpoints", force: :cascade do |t|
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
 
   create_table "interpellations", force: :cascade do |t|
     t.integer "candidate_id"
+    t.integer "committee_id"
     t.integer "issue_id"
     t.text    "content"
     t.text    "summary"
@@ -148,6 +151,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string  "decision"
     t.string  "url"
     t.date    "date"
+    t.string  "category"
   end
 
   create_table "interviews", force: :cascade do |t|
@@ -246,6 +250,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
 
   create_table "votes", force: :cascade do |t|
     t.integer "candidate_id"
+    t.integer "committee_id"
     t.integer "issue_id"
     t.text    "content"
     t.text    "summary"
@@ -253,6 +258,7 @@ ActiveRecord::Schema.define(version: 20150821172158) do
     t.string  "decision"
     t.string  "url"
     t.date    "date"
+    t.string  "category"
   end
 
 end

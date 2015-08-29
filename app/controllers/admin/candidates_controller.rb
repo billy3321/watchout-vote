@@ -64,6 +64,6 @@ class Admin::CandidatesController < Admin::BaseController
     params.require(:candidate).permit(:name, :image, :image_cache, :remove_image, :party_id, :gender,
       :age, :education, :experience, :manifesto, :aimed_bill, :aimed_issue, :legislator_no, :withdraw,
       :eight, :eight_constituency_id, :nine, :nine_constituency_id, :nine_position, :nine_number,
-      :target, {:committee_ids => []})
+      :target, {committee_ids: []})
   end
 end

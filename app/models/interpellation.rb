@@ -4,6 +4,7 @@ class Interpellation < ActiveRecord::Base
   belongs_to :record, polymorphic: true
   delegate :party, to: :candidate, allow_nil: false
   has_one :clarify, as: :record
+  belongs_to :committee
   accepts_nested_attributes_for :clarify, reject_if: :all_blank, allow_destroy: true
   validates_presence_of :candidate_id, message: '請選擇候選人'
   validates_presence_of :issue_id, message: '請選擇議題'

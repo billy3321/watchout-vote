@@ -66,7 +66,7 @@ class Admin::InterpellationsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interpellation_params
-    params.require(:interpellation).permit(:candidate_id, :issue_id, :content, :summary, :detail, :decision, :url, :date,
-      :clarify_attributes => [:id, :record_id, :record_type, :content, :date, :_destroy])
+    params.require(:interpellation).permit(:candidate_id, :committee_id, :issue_id, :content, :summary, :detail, :decision, :url, :date,
+      :category, clarify_attributes: [:id, :record_id, :record_type, :content, :date, :_destroy])
   end
 end

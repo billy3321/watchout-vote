@@ -66,7 +66,7 @@ class Admin::BillsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bill_params
-    params.require(:bill).permit(:candidate_id, :issue_id, :content, :summary, :detail, :decision, :url, :date,
-      :clarify_attributes => [:id, :record_id, :record_type, :content, :date, :_destroy])
+    params.require(:bill).permit(:candidate_id, :committee_id, :issue_id, :content, :summary, :detail, :decision, :url, :date,
+      :category, clarify_attributes: [:id, :record_id, :record_type, :content, :date, :_destroy])
   end
 end

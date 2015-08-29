@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :vote do
     candidate { FactoryGirl.create(:candidate) }
+    committee { FactoryGirl.create(:committee) }
     issue { FactoryGirl.create(:issue) }
     sequence(:content)  { |n| "Vote Content #{n}" }
     sequence(:summary)  { |n| "Vote Summary #{n}" }
