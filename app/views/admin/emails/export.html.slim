@@ -1,0 +1,6 @@
+h1
+  | email訂閱匯出
+p
+  textarea#textarea.long-input name="textarea" 
+    - @emails.each do |e|
+      = "#{e.email}\n"

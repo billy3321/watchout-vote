@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     resources :votes
     resources :questions
     resources :promises
+    resources :emails, only: :index
+    match 'emails/export', to: 'emails#export', via: 'get', as: 'emails_export'
     match 'slides/sort',  to: 'slides#sort',  via: 'put'
     # resources :slides, except: [:show] do
     #   

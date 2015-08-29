@@ -1,0 +1,24 @@
+h1 email訂閱管理
+table border="1" cellpadding="5" width="100%" 
+  tr
+    th 編號
+    th width="578" email
+    th 狀態
+  - num = 0
+  - @emails.each do |e|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="middle" width="50" = e.id
+        td
+          = mail_to e.email
+        td align="center" width="176" 訂閱
+    - else
+      tr.even
+        td align="center" valign="middle" width="50" = e.id
+        td
+          = mail_to e.email
+        td align="center" width="176" 訂閱
+
+#page
+  = paginate @emails

@@ -10,6 +10,7 @@ class CreateEmails < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :emails, :email,   unique: true
     add_index :emails, :confirmation_token,   unique: true
     add_index :emails, :delete_confirmation_token,   unique: true
   end

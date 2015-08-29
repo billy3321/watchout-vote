@@ -12,7 +12,7 @@ table border="1" cellpadding="5" width="100%"
     - num += 1
     - if num % 2 == 0
       tr
-        td align="center" valign="middle" width="37"  1
+        td align="center" valign="middle" width="37" = i.id
         td
           = link_to i.name, edit_admin_issue_path(i)
         td align="center" width="136" 2010-10-10
@@ -22,7 +22,7 @@ table border="1" cellpadding="5" width="100%"
           = link_to "刪除", admin_issue_path(i), method: :delete, data: { confirm: '確認要刪除嗎？' }
     - else
       tr.even
-        td align="center" valign="middle" width="37"  1
+        td align="center" valign="middle" width="37" = i.id
         td
           = link_to i.name, edit_admin_issue_path(i)
         td align="center" width="136" 2010-10-10
