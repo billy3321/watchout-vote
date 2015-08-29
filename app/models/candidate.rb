@@ -10,4 +10,8 @@ class Candidate < ActiveRecord::Base
   validates_presence_of :name, message: '請填寫姓名'
   validates_presence_of :image, message: '請上傳照片'
   validates_presence_of :party_id, message: '請選擇政黨'
+
+  scope :with_interviews, -> { joins(:interviews) }
+  scope :random_sort, -> { order("RANDOM()") }
+
 end
