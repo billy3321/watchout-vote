@@ -4,6 +4,10 @@ table border="1" cellpadding="5" width="100%"
     td width="677"
       = f.association :candidate, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
+    th ＊提案所屬委員會
+    td
+      = f.association :committee, label: false, label_method: :name, value_method: :id, include_blank: false
+  tr
     th ＊提案日期
     td
       = f.input :date, as: :string, label: false, input_html: { class: "datetimepicker" }, required: true

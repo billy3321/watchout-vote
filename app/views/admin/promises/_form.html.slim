@@ -15,6 +15,15 @@ table border="1" cellpadding="5" width="100%"
     th ＊承諾書答覆
     td
       = f.cktext_area :answer, label: false, required: true, input_html: { class: 'long-input' }
+
+  tr
+    th 承諾書總結
+    td
+      = f.cktext_area :summary, label: false, required: true, input_html: { class: 'long-input' }
+  tr
+    th 承諾書細節
+    td
+      = f.input :detail, label: false, required: true, input_html: { class: 'long-input' }
   tr
     th valign="top" ＊立場判斷
     td

@@ -43,6 +43,14 @@ table border="1" cellpadding="5" width="100%"
     td
       = f.association :party, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
+    th 立委ID
+    td
+      = f.input :legislator_no , label: false, required: true, input_html: { class: 'input_14' }
+  tr
+    th 是否還在競選？
+    td
+      = f.input :withdraw, label: false, collection: [['競選中', false], ['已退出', true]], include_blank: false
+  tr
     th 性別
     td
       = f.input :gender, label: false, collection: [['男', 'male'], ['女', 'female'], ['其他', 'other']], include_blank: false
