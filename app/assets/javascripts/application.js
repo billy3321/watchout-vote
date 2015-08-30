@@ -17,6 +17,15 @@
 //= require bjqs-1.3.min
 //= require_tree .
 
+
+var navigationFn = {
+  goToSection: function(id) {
+    $('html, body').animate({
+      scrollTop: $(id).offset().top
+    }, 0);
+  }
+}
+
 var ready = function(){
   $('#banner-fade').bjqs({
     height      : 638,
@@ -24,16 +33,20 @@ var ready = function(){
     responsive  : true
   });
 
-  $('#result-section').hide();
+  $('#result').hide();
 
   $('#agree').click(function(){
-    $('#answer').text('您的選擇是贊成！')
-    $('#result-section').slideDown( "slow" )
+    $('#answer').text('您的選擇是贊成！');
+    $('#result').slideDown( "slow", function(){
+      navigationFn.goToSection('#result');
+    });
   })
 
   $('#disagree').click(function(){
-    $('#answer').text('您的選擇是反對！')
-    $('#result-section').slideDown( "slow" )
+    $('#answer').text('您的選擇是反對！');
+    $('#result').slideDown( "slow", function(){
+      navigationFn.goToSection('#result');
+    });
   })
 };
 
