@@ -7,7 +7,9 @@ class PartyStandpoint < ActiveRecord::Base
   validates_presence_of :disagree, message: '請填寫反對比例'
   validates_presence_of :abstain, message: '請填寫棄權比例'
   validates_presence_of :notvote, message: '請填寫未投票比例'
-  validates_presence_of :decision, message: '請確定政黨傾向'
+  validates_presence_of :decision, message: '請確定政黨立場'
+  validates :decision, inclusion: { in: %w(agree disagree abstain notvote),
+    message: "立場字串不正確" }
 
   scope :agree, -> { where(decision: "agree") }
   scope :disagree, -> { where(decision: "disagree") }

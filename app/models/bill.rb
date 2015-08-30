@@ -12,6 +12,8 @@ class Bill < ActiveRecord::Base
   validates_presence_of :summary, message: '請填寫立場判斷'
   validates_presence_of :decision, message: '請選擇立場'
   validates_presence_of :url, message: '請填寫來源網址'
+  validates :decision, inclusion: { in: %w(agree disagree abstain notvote),
+    message: "立場字串不正確" }
 
   scope :date_asc, -> { order("date ASC").order("created_at ASC") }
   scope :date_desc, -> { order("date DESC").order("created_at DESC") }

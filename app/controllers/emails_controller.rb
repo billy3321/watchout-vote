@@ -2,7 +2,7 @@ class EmailsController < ApplicationController
 
   # POST /emails
   def create
-    session[:return_to] ||= request.referer
+    session[:return_to] ||= request.referer ? request.referer : root_url
     @email = Email.new(email_params)
     if @email.save
       redirect_to session.delete(:return_to), notice: '成功訂閱電子報！'
@@ -11,18 +11,9 @@ class EmailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /emails/1
-  def update
-    if @email.update(email_params)
-      redirect_to admin_emails_url, notice: '電子郵件成功更新！'
-    else
-      render :edit
-    end
-  end
-
   # DELETE /emails/1
   def destroy
-    session[:return_to] ||= request.referer
+    session[:return_to] ||= request.referer ? request.referer : root_url
     @email = Email.where(email: email_params["email"].strip.downcase).first
     unless @email.blank?
       @email.destroy
