@@ -12,7 +12,7 @@ class CreateVotes < ActiveRecord::Migration
       t.date :date
       t.string :category
 
-      # t.timestamps null: false
+      t.timestamps null: false
     end
   end
 end

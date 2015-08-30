@@ -17,16 +17,18 @@ ActiveRecord::Schema.define(version: 20150829103901) do
   enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "committee_id"
-    t.integer "issue_id"
-    t.text    "content"
-    t.text    "summary"
-    t.string  "detail"
-    t.string  "decision"
-    t.string  "url"
-    t.date    "date"
-    t.string  "category"
+    t.integer  "candidate_id"
+    t.integer  "committee_id"
+    t.integer  "issue_id"
+    t.text     "content"
+    t.text     "summary"
+    t.string   "detail"
+    t.string   "decision"
+    t.string   "url"
+    t.date     "date"
+    t.string   "category"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "candidate_standpoints", force: :cascade do |t|
@@ -155,18 +157,21 @@ ActiveRecord::Schema.define(version: 20150829103901) do
 
   add_index "emails", ["confirmation_token"], name: "index_emails_on_confirmation_token", unique: true, using: :btree
   add_index "emails", ["delete_confirmation_token"], name: "index_emails_on_delete_confirmation_token", unique: true, using: :btree
+  add_index "emails", ["email"], name: "index_emails_on_email", unique: true, using: :btree
 
   create_table "interpellations", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "committee_id"
-    t.integer "issue_id"
-    t.text    "content"
-    t.text    "summary"
-    t.string  "detail"
-    t.string  "decision"
-    t.string  "url"
-    t.date    "date"
-    t.string  "category"
+    t.integer  "candidate_id"
+    t.integer  "committee_id"
+    t.integer  "issue_id"
+    t.text     "content"
+    t.text     "summary"
+    t.string   "detail"
+    t.string   "decision"
+    t.string   "url"
+    t.date     "date"
+    t.string   "category"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "interviews", force: :cascade do |t|
@@ -267,16 +272,18 @@ ActiveRecord::Schema.define(version: 20150829103901) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "committee_id"
-    t.integer "issue_id"
-    t.text    "content"
-    t.text    "summary"
-    t.string  "detail"
-    t.string  "decision"
-    t.string  "url"
-    t.date    "date"
-    t.string  "category"
+    t.integer  "candidate_id"
+    t.integer  "committee_id"
+    t.integer  "issue_id"
+    t.text     "content"
+    t.text     "summary"
+    t.string   "detail"
+    t.string   "decision"
+    t.string   "url"
+    t.date     "date"
+    t.string   "category"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
