@@ -9,8 +9,8 @@
 .block
   h1.ititle = @issue.description
   .anser-chose
-    a.color-btn#agree href="#" 贊成
-    a.color-btn#disagree href="#" 反對
+    a.color-btn#agree href="#result" 贊成
+    a.color-btn#disagree href="#result" 反對
 .block#result
   h2.ititle#answer
   .analyze-party.analyze-block
@@ -18,7 +18,7 @@
       h3 贊成門檻下修
       - @party_standpoints.agree.each do |p|
         .party-block.party-issue-ana
-          = link_to party_path(p.party) do
+          = link_to party_issues_path(p.party) do
             h4 = p.party.short_name
             - p.agree.times do
               span.yes-s
@@ -28,7 +28,7 @@
       h3 反對門檻下修
       - @party_standpoints.disagree.each do |p|
         .party-block.party-issue-ana
-          = link_to party_path(p.party) do
+          = link_to party_issues_path(p.party) do
             h4 = p.party.short_name
             - p.agree.times do
               span.yes-s
@@ -41,7 +41,7 @@
       ul.people-list.people-three
         - @candidate_standpoints.agree.each do |c|
           li
-            = link_to candidate_path(c.candidate) do
+            = link_to candidate_issues_path(c.candidate) do
               = image_tag(c.candidate.image, alt: "")
               h4.name02 = c.candidate.name
     .no-block
@@ -49,7 +49,7 @@
       ul.people-list.people-three
         - @candidate_standpoints.disagree.each do |c|
           li
-            = link_to candidate_path(c.candidate) do
+            = link_to candidate_issues_path(c.candidate) do
               = image_tag(c.candidate.image, alt: "")
               h4.name02 = c.candidate.name
     .noanswer-block
@@ -57,7 +57,7 @@
       ul.people-list.people-three
         - @candidate_standpoints.unknown.each do |c|
           li
-            = link_to candidate_path(c.candidate) do
+            = link_to candidate_issues_path(c.candidate) do
               = image_tag(c.candidate.image, alt: "")
               h4.name02 = c.candidate.name
 
