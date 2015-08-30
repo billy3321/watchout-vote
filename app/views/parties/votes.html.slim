@@ -12,13 +12,15 @@
           = link_to p.issue.name, party_issue_path(@party, p.issue), class: "current"
         - else
           = link_to p.issue.name, party_issue_path(@party, p.issue)
-.block
-  .analyze-block.party-issue-ana
-    .issue-ana-block.inner-ana
-      - @party_standpoint.agree.times do
-        span.yes-s
-      - @party_standpoint.disagree.times do
-        span.no-s
+
+- unless @party_standpoint.blank?
+  .block
+    .analyze-block.party-issue-ana
+      .issue-ana-block.inner-ana
+        - @party_standpoint.agree.times do
+          span.yes-s
+        - @party_standpoint.disagree.times do
+          span.no-s
 
 .say-list
   ul.say-sort-tag

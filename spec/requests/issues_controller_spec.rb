@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Admin/Issue" do
+describe "Issue" do
 
   let(:issue) { FactoryGirl.create(:issue) }
 
