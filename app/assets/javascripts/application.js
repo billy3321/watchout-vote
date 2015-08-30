@@ -24,16 +24,16 @@ var ready = function(){
     responsive  : true
   });
 
-  $('#result').hide();
+  $('#result-section').hide();
 
   $('#agree').click(function(){
     $('#answer').text('您的選擇是贊成！')
-    $('#result').slideDown( "slow" )
+    $('#result-section').slideDown( "slow" )
   })
 
   $('#disagree').click(function(){
     $('#answer').text('您的選擇是反對！')
-    $('#result').slideDown( "slow" )
+    $('#result-section').slideDown( "slow" )
   })
 };
 
