@@ -2,12 +2,12 @@ module ApplicationHelper
   def default_meta_tags
     {
       separator: "｜",
-      site: "",
+      site: "立委求職中",
       reverse: true,
       description: "",
       keywords: "",
       og: {
-        title: "",
+        title: "立委求職中",
         description: "",
         type: "website",
         image: "#{Setting.url.protocol}://#{Setting.url.host}/images/logo.png",
