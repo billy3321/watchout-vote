@@ -61,6 +61,6 @@ class Admin::PartyStandpointsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def party_standpoint_params
-    params.require(:party_standpoint).permit(:party_id, :issue_id, :agree, :disagree, :abstain, :notvote)
+    params.require(:party_standpoint).permit(:party_id, :issue_id, :agree, :disagree, :abstain, :notvote, :decision)
   end
 end
