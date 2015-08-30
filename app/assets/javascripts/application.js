@@ -17,12 +17,24 @@
 //= require bjqs-1.3.min
 //= require_tree .
 
-jQuery(document).ready(function($) {
-
+var ready = function(){
   $('#banner-fade').bjqs({
     height      : 638,
     width       : 1500,
     responsive  : true
   });
 
-});
+  $('#result').hide();
+
+  $('#agree').click(function(){
+    $('#answer').text('您的選擇是贊成！')
+    $('#result').slideDown( "slow" )
+  })
+
+  $('#disagree').click(function(){
+    $('#answer').text('您的選擇是反對！')
+    $('#result').slideDown( "slow" )
+  })
+};
+
+$(document).ready(ready);
