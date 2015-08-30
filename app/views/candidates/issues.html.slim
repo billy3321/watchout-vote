@@ -10,7 +10,7 @@
     .issue-ana-block
       - @candidate_standpoints.each do |c|
         = link_to candidate_issue_path(@candidate, c.issue) do
-          h2 罷免
+          h2 = c.issue.name
           - c.agree.times do
             span.yes-s
           - c.disagree.times do
