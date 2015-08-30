@@ -1,0 +1,35 @@
+h1 候選人專訪
+.btn
+  = link_to "新增承諾", new_admin_interview_path
+table border="1" cellpadding="5" width="100%"
+  tr
+    th 編號
+    th width="110"  姓名
+    th width="172"  圖片
+    th width="161"  描述
+    th 操作
+  - num = 0
+  - @interviews.each do |i|
+    - num += 1
+    - if num % 2 == 0
+      tr
+        td align="center" valign="middle" width="48" = i.id
+        td align="center" = i.candidate.name
+        td align="center" = image_tag(i.image)
+        td align="center" = i.description
+        td align="center" width="116"
+          = link_to "編輯", edit_admin_interview_path(i)
+          | ｜
+          = link_to "刪除", admin_interview_path(i), method: :delete, data: { confirm: '確認要刪除嗎？' }
+    - else
+      tr.even
+        td align="center" valign="middle" width="48" = i.id
+        td align="center" = i.candidate.name
+        td align="center" = image_tag(i.image)
+        td align="center" = i.description
+        td align="center" width="116"
+          = link_to "編輯", edit_admin_interview_path(i)
+          | ｜
+          = link_to "刪除", admin_interview_path(i), method: :delete, data: { confirm: '確認要刪除嗎？' }
+#page
+  = paginate @interviews

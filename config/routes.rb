@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     end
     resources :parties
     resources :candidates
+    resources :interviews
     resources :party_standpoints
     resources :candidate_standpoints
     resources :bills

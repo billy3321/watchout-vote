@@ -1,0 +1,3 @@
+h1 專訪管理：編輯專訪
+= simple_form_for @interview, url: admin_interview_path(@interview), method: :put do |f|
+  = render partial: 'form', :locals => { :f => f }
