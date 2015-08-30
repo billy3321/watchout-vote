@@ -18,4 +18,15 @@ RSpec.describe Candidate, type: :model do
       FactoryGirl.create :withdraw_candidate
     }.to change { Candidate.count }.by(1)
   end
+
+  it "#with_interviews_success" do
+    candidate1 = FactoryGirl.create :candidate
+    candidate2 = FactoryGirl.create :candidate
+    candidate3 = FactoryGirl.create :candidate
+    candidate4 = FactoryGirl.create :candidate
+    2.times { FactoryGirl.create :interview, candidate: candidate1 }
+    2.times { FactoryGirl.create :interview, candidate: candidate2 }
+    expect(Candidate.with_interviews.length).to eq(2)
+  end
 end
+

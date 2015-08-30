@@ -11,6 +11,8 @@ class CreateInterpellations < ActiveRecord::Migration
       t.string :url
       t.date :date
       t.string :category
+
+      # t.timestamps null: false
     end
   end
 end

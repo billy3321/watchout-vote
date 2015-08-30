@@ -16,8 +16,11 @@ class Interpellation < ActiveRecord::Base
   validates :decision, inclusion: { in: %w(agree disagree abstain notvote),
     message: "立場字串不正確" }
 
-  scope :date_asc, -> { order("date ASC").order("created_at ASC") }
-  scope :date_desc, -> { order("date DESC").order("created_at DESC") }
+  # don't have created_at, use id instead
+  # scope :date_asc, -> { order("date ASC").order("created_at ASC") }
+  scope :date_asc, -> { order("date ASC").order("id ASC") }
+  # scope :date_desc, -> { order("date DESC").order("created_at DESC") }
+  scope :date_desc, -> { order("date DESC").order("id DESC") }
 
   def self.get_party_interpellation(party, issue)
     joins(:candidate).where("candidates.party_id = ? AND issue_id = ?", party.id, issue.id)
