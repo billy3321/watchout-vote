@@ -13,21 +13,21 @@ RSpec.describe Bill, type: :model do
     }.to change { Clarify.count }.by(1)
   end
 
-  # it "#date_asc_success" do
-  #   bill1 = FactoryGirl.create :bill, created_at: 4.days.ago, date: 4.days.ago
-  #   bill2 = FactoryGirl.create :bill, created_at: 3.days.ago, date: 2.days.ago
-  #   bill3 = FactoryGirl.create :bill, created_at: 2.days.ago, date: 4.days.ago
-  #   bill4 = FactoryGirl.create :bill, created_at: 1.days.ago, date: 2.days.ago
-  #   expect(Bill.date_asc).to eq([bill2, bill4, bill1, bill3])
-  # end
+  it "#date_asc_success" do
+    bill1 = FactoryGirl.create :bill, created_at: 4.days.ago, date: 4.days.ago
+    bill2 = FactoryGirl.create :bill, created_at: 3.days.ago, date: 2.days.ago
+    bill3 = FactoryGirl.create :bill, created_at: 2.days.ago, date: 4.days.ago
+    bill4 = FactoryGirl.create :bill, created_at: 1.days.ago, date: 2.days.ago
+    expect(Bill.date_asc).to eq([bill1, bill3, bill2, bill4])
+  end
 
-  # it "#date_desc_success" do
-  #   bill1 = FactoryGirl.create :bill, created_at: 4.days.ago, date: 4.days.ago
-  #   bill2 = FactoryGirl.create :bill, created_at: 3.days.ago, date: 2.days.ago
-  #   bill3 = FactoryGirl.create :bill, created_at: 2.days.ago, date: 4.days.ago
-  #   bill4 = FactoryGirl.create :bill, created_at: 1.days.ago, date: 2.days.ago
-  #   expect(Bill.date_desc).to eq([bill3, bill1, bill4, bill2])
-  # end
+  it "#date_desc_success" do
+    bill1 = FactoryGirl.create :bill, created_at: 4.days.ago, date: 4.days.ago
+    bill2 = FactoryGirl.create :bill, created_at: 3.days.ago, date: 2.days.ago
+    bill3 = FactoryGirl.create :bill, created_at: 2.days.ago, date: 4.days.ago
+    bill4 = FactoryGirl.create :bill, created_at: 1.days.ago, date: 2.days.ago
+    expect(Bill.date_desc).to eq([bill4, bill2, bill3, bill1])
+  end
 
   it "#get_party_bill_success" do
     party = FactoryGirl.create :party

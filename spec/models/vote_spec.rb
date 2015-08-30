@@ -13,21 +13,21 @@ RSpec.describe Vote, type: :model do
     }.to change { Clarify.count }.by(1)
   end
 
-  # it "#date_asc_success" do
-  #   vote1 = FactoryGirl.create :vote, created_at: 4.days.ago, date: 4.days.ago
-  #   vote2 = FactoryGirl.create :vote, created_at: 3.days.ago, date: 2.days.ago
-  #   vote3 = FactoryGirl.create :vote, created_at: 2.days.ago, date: 4.days.ago
-  #   vote4 = FactoryGirl.create :vote, created_at: 1.days.ago, date: 2.days.ago
-  #   expect(Vote.date_asc).to eq([vote2, vote4, vote1, vote3])
-  # end
+  it "#date_asc_success" do
+    vote1 = FactoryGirl.create :vote, created_at: 4.days.ago, date: 4.days.ago
+    vote2 = FactoryGirl.create :vote, created_at: 3.days.ago, date: 2.days.ago
+    vote3 = FactoryGirl.create :vote, created_at: 2.days.ago, date: 4.days.ago
+    vote4 = FactoryGirl.create :vote, created_at: 1.days.ago, date: 2.days.ago
+    expect(Vote.date_asc).to eq([vote1, vote3, vote2, vote4])
+  end
 
-  # it "#date_desc_success" do
-  #   vote1 = FactoryGirl.create :vote, created_at: 4.days.ago, date: 4.days.ago
-  #   vote2 = FactoryGirl.create :vote, created_at: 3.days.ago, date: 2.days.ago
-  #   vote3 = FactoryGirl.create :vote, created_at: 2.days.ago, date: 4.days.ago
-  #   vote4 = FactoryGirl.create :vote, created_at: 1.days.ago, date: 2.days.ago
-  #   expect(Vote.date_desc).to eq([vote3, vote1, vote4, vote2])
-  # end
+  it "#date_desc_success" do
+    vote1 = FactoryGirl.create :vote, created_at: 4.days.ago, date: 4.days.ago
+    vote2 = FactoryGirl.create :vote, created_at: 3.days.ago, date: 2.days.ago
+    vote3 = FactoryGirl.create :vote, created_at: 2.days.ago, date: 4.days.ago
+    vote4 = FactoryGirl.create :vote, created_at: 1.days.ago, date: 2.days.ago
+    expect(Vote.date_desc).to eq([vote4, vote2, vote3, vote1])
+  end
 
   it "#get_party_vote_success" do
     party = FactoryGirl.create :party
