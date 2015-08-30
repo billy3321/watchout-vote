@@ -23,7 +23,7 @@ class EmailsController < ApplicationController
   # DELETE /emails/1
   def destroy
     session[:return_to] ||= request.referer
-    @email = Email.where(email: email_params["email"]).first
+    @email = Email.where(email: email_params["email"].strip.downcase).first
     unless @email.blank?
       @email.destroy
     end

@@ -6,6 +6,6 @@ class Email < ActiveRecord::Base
   private
 
   def lower_case_email
-    self.email.downcase!
+    self.email.strip.downcase!
   end
 end
