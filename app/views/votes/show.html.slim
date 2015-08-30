@@ -2,7 +2,7 @@
   h1.ititle = @vote.candidate.name
   ul.inner-tag
     li
-      = link_to "議題表態", candidate_issues_path(@vote.candidate, @vote.issue), class: "current"
+      = link_to "議題表態", candidate_issues_path(@vote.candidate), class: "current"
     li
       = link_to "基本資料", candidate_path(@vote.candidate) 
   ul.issue-tag
