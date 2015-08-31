@@ -18,6 +18,7 @@ defaults: &defaults
   email:
     sender: ""
     contact: ""
+    clarify: ""
 
   smtp_settings:
     port: ""

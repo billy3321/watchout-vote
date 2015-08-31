@@ -15,7 +15,7 @@ class ClarifyMail < MailForm::Base
     {
       :subject => "澄清：對於#{candidate_name}的#{record_type}",
       # :to => "wevote@watchout.tw",
-      :to => "billy3321@gmail.com",
+      :to => Setting.email.clarify,
       :from => %("#{name}" <#{email}>)
     }
   end
