@@ -49,6 +49,7 @@ gem 'pg'
 gem 'ransack'
 gem 'unicode-display_width'
 gem 'jquery-datetimepicker-rails'
+gem 'mail_form'
 
 
 source 'https://rails-assets.org' do

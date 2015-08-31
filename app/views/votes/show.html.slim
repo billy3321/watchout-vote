@@ -19,5 +19,21 @@
   h3.say-sort
     | 立院表決
     span = @vote.date.strftime('%Y-%m-%d')
-  .say-txt
-    = @vote.content.try(:html_safe)
+  .say-txt = @vote.content.try(:html_safe)
+  .other-sort-tag
+    ul
+      li = @vote.committee.name
+      - if @vote.category == "hearings"
+        li 公聽會
+      - elsif @vote.category == "meeting"
+        li 委員會
+  .iwreply-link
+    = link_to "如果有誤歡迎來函澄清", vote_clarify_path(@vote)
+  - unless @vote.clarify.blank?
+    .iwreply-block
+      h4 立委澄清說明
+      = link_to "詳細內容", @vote.clarify.url, target: "_blank", class: "more-txt"
+      .iwr-time 
+        | 最後更新時間：
+        = @vote.clarify.updated_at.try(:strftime, '%Y-%m-%d %H:%i')
+      .iwr-txt = @vote.clarify.content.try(:html_safe)

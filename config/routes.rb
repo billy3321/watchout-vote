@@ -32,9 +32,16 @@ Rails.application.routes.draw do
     match 'issues/:id/interpellations', to: 'candidates#interpellations', via: 'get', as: 'issue_interpellations'
     match 'issues/:id/votes', to: 'candidates#votes', via: 'get', as: 'issue_votes'
   end
-  resources :bills, only: :show
-  resources :interpellations, only: :show
-  resources :votes, only: :show
+  resources :bills, only: :show do
+    match 'clarify', to: 'bills#clarify', via: 'get', as: 'clarify'
+  end
+  resources :interpellations, only: :show do
+    match 'clarify', to: 'interpellations#clarify', via: 'get', as: 'clarify'
+  end
+  resources :votes, only: :show do
+    match 'clarify', to: 'votes#clarify', via: 'get', as: 'clarify'
+  end
+  resources "clarify_mails", only: :create
   match '/emails', to: 'emails#create',  via: 'post'
   match '/emails', to: 'emails#destroy', via: 'delete'
   namespace :admin do
@@ -43,8 +50,9 @@ Rails.application.routes.draw do
       resources :slides
     end
     resources :parties
-    resources :candidates
-    resources :interviews
+    resources :candidates do
+      resources :interviews
+    end
     resources :party_standpoints
     resources :candidate_standpoints
     resources :bills
@@ -55,6 +63,7 @@ Rails.application.routes.draw do
     resources :emails, only: :index
     match 'emails/export', to: 'emails#export', via: 'get', as: 'emails_export'
     match 'slides/sort',  to: 'slides#sort',  via: 'put'
+    match 'interviews/sort',  to: 'interviews#sort',  via: 'put'
     # resources :slides, except: [:show] do
     #   
     # end

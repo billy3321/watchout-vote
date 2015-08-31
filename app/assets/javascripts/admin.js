@@ -78,6 +78,31 @@ var ready = function(){
       }
     });
   });
+
+  $('.sortable-interview').sortable().bind('sortupdate', function(e, ui) {
+    // array to store new order
+    updated_order = []
+    // set the updated positions
+    set_positions();
+
+    // populate the updated_order array with the new task positions
+    $('.panel.panel-default').each(function(i){
+        updated_order.push({ id: $(this).data("id"), position: i+1 });
+    });
+
+    // send the updated order via ajax
+    $.ajax({
+      type: "PUT",
+      url: '/admin/interviews/sort',
+      data: {
+        _method: 'put',
+        interview: {
+          order: updated_order
+        },
+        authenticity_token: window._token
+      }
+    });
+  });
   // console.log('ready');
 };
 

@@ -8,6 +8,10 @@ table border="1" cellpadding="5" width="100%"
     td
       = f.association :committee, label: false, label_method: :name, value_method: :id, include_blank: false
   tr
+    th ＊發言所屬種類
+    td
+      = f.input :category, label: false, collection: [['委員會', 'meeting'], ['公聽會', 'hearings']], input_html: { class: 'form-control' }, include_blank: false
+  tr
     th ＊發言日期
     td
       = f.input :date, as: :string, label: false, input_html: { class: "datetimepicker" }, required: true
@@ -44,6 +48,10 @@ table border="1" cellpadding="5" width="100%"
         th valign="top"  立委澄清日期
         td
           = c.input :date, as: :string, label: false, input_html: { class: "datetimepicker input_14" }, required: true
+      tr
+        th valign="top" 立委澄清網址
+        td
+          = c.input :url, as: :string, label: false, required: true
   tr
     th valign="top" ＊原始來源記錄url
     td

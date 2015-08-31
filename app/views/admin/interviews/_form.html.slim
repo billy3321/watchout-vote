@@ -1,8 +1,19 @@
+= f.hidden_field :candidate_id, value: @candidate.id
 table border="1" cellpadding="5" width="100%" 
   tr
-    th width="141" ＊候選人姓名
-    td width="677" 
-      = f.association :candidate, label: false, label_method: :name, value_method: :id, include_blank: false
+    th width="109" 候選人
+    td colspan="3" width="681" 
+      p = @candidate.name
+  tr
+    th width="99" 是否公開
+    td width="279" 
+      p
+        - if @interview.new_record?
+          = f.input :published, as: :boolean, label: false, input_html: { checked: false }
+          | 公開
+        - else
+          = f.input :published, as: :boolean, label: false
+          | 公開
   tr
     th ＊專訪日期
     td
@@ -19,11 +30,14 @@ table border="1" cellpadding="5" width="100%"
     td colspan="3"
       = f.input :alt, label: false, input_html: { class: 'long-input' }
   tr
+    th ＊專訪標題
+    td
+      = f.input :title, label: false, input_html: { class: 'long-input' }
+  tr
     th ＊專訪描述
     td
       = f.cktext_area :description, label: false, required: true, input_html: { class: 'long-input' }
-
 .btn
   - if @interview.new_record?
-    = link_to "回上頁", admin_interviews_path, class: "back"
+    = link_to "回上頁", admin_candidates_path, class: "back"
   = f.submit '儲存', id: 'button', class: 'submit'

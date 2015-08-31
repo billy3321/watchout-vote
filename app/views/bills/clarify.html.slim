@@ -1,0 +1,35 @@
+request.original_url
+
+.inner-title
+  h1.ititle 立委澄清
+.info-content-wrap
+  h2.ctitle 針對此則內容澄清
+  .info-content
+    p.who-date = "#{@bill.candidate.name} / 提案 / #{@bill.date.strftime('%Y-%m-%d')}"
+    .say-what-content = @bill.content.try(:html_safe)
+    = link_to "內容連結", @bill.url, target: "_blank", class: "swc-link"
+  = simple_form_for @clarify_mail, url: clarify_mails_path do |f|
+    div style="display:none"
+      = f.input :nickname, hint: '請留空！'
+    = f.hidden_field :candidate, value: @bill.candidate.name
+    = f.hidden_field :record_url, value: request.original_url
+    = f.hidden_field :record_type, value: "提案"
+    h2.ctitle 澄清說明*
+    .info-content
+      .form-note 如果您不是要針對此則澄清，而是要回報我們網站疏漏的資料，也請將疏漏資料的立院連結一併提供，否則無法確認記錄的資料我們將不會採用。
+      = f.cktext_area :message, label: false, required: true, input_html: { class: 'input-02', rows: 10, cols: 30}
+    h2.ctitle 資料來源網址
+    .info-content
+      = f.input :url , label: false, input_html: { class: 'input-01' }
+    h2.ctitle 聯絡人*
+    .info-content
+      .form-note 澄清內容須與當事者確認，請留下聯絡人資料
+      = f.input :name , label: false, required: true, input_html: { class: 'input-01' }
+    h2.ctitle 電話*
+    .info-content
+      = f.input :phone , label: false, required: true, input_html: { class: 'input-01' }
+    h2.ctitle Email*
+    .info-content
+      = f.input :email , label: false, required: true, input_html: { class: 'input-01' }
+    .form-btn
+      = f.submit '送出', id: 'button', class: 'btn'

@@ -82,3 +82,6 @@ table border="1" cellpadding="5" width="100%"
   - if @candidate.new_record?
     = link_to "回上頁", admin_candidates_path, class: "back"
   = f.submit '儲存', id: 'button', class: 'submit'
+
+- unless @candidate.new_record?
+  = render partial: 'interviews', locals: {candidate: @candidate}

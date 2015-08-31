@@ -11,10 +11,18 @@ class InterpellationsController < ApplicationController
     @candidate_standpoints = @interpellation.candidate.candidate_standpoints.includes(:issue)
   end
 
+  def clarify
+    @clarify_mail = ClarifyMail.new
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_interpellation
-    @interpellation = params[:id] ? Interpellation.find(params[:id]) : Interpellation.new(interpellation_params)
+    if params[:interpellation_id]
+      @interpellation = Interpellation.find(params[:interpellation_id])
+    else
+      @interpellation = params[:id] ? Interpellation.find(params[:id]) : Interpellation.new(interpellation_params)
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

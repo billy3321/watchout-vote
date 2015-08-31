@@ -19,5 +19,21 @@
   h3.say-sort
     | 立院發言
     span = @interpellation.date.strftime('%Y-%m-%d')
-  .say-txt
-    = @interpellation.content.try(:html_safe)
+  .say-txt = @interpellation.content.try(:html_safe)
+  .other-sort-tag
+    ul
+      li = @interpellation.committee.name
+      - if @interpellation.category == "hearings"
+        li 公聽會
+      - elsif @interpellation.category == "meeting"
+        li 委員會
+  .iwreply-link
+    = link_to "如果有誤歡迎來函澄清", interpellation_clarify_path(@interpellation)
+  - unless @interpellation.clarify.blank?
+    .iwreply-block
+      h4 立委澄清說明
+      = link_to "詳細內容", @interpellation.clarify.url, target: "_blank", class: "more-txt"
+      .iwr-time 
+        | 最後更新時間：
+        = @interpellation.clarify.updated_at.try(:strftime, '%Y-%m-%d %H:%i')
+      .iwr-txt = @interpellation.clarify.content.try(:html_safe)

@@ -11,10 +11,18 @@ class VotesController < ApplicationController
     @candidate_standpoints = @vote.candidate.candidate_standpoints.includes(:issue)
   end
 
+  def clarify
+    @clarify_mail = ClarifyMail.new
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_vote
-    @vote = params[:id] ? Vote.find(params[:id]) : Vote.new(vote_params)
+    if params[:vote_id]
+      @vote = Vote.find(params[:vote_id])
+    else
+      @vote = params[:id] ? Vote.find(params[:id]) : Vote.new(vote_params)
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
