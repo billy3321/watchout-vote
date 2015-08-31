@@ -16,4 +16,11 @@ describe "Interpellation" do
       expect(response).to be_success
     end
   end
+
+  describe "#clarify" do
+    it "success" do
+      get "/interpellations/#{interpellation.id}/clarify"
+      expect(response).to be_success
+    end
+  end
 end

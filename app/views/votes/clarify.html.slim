@@ -11,7 +11,7 @@ request.original_url
   = simple_form_for @clarify_mail, url: clarify_mails_path do |f|
     div style="display:none"
       = f.input :nickname, hint: '請留空！'
-    = f.hidden_field :candidate, value: @vote.candidate.name
+    = f.hidden_field :candidate_name, value: @vote.candidate.name
     = f.hidden_field :record_url, value: request.original_url
     = f.hidden_field :record_type, value: "表決"
     h2.ctitle 澄清說明*

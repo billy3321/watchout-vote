@@ -5,7 +5,7 @@ class ClarifyMail < MailForm::Base
   attribute :nickname,   captcha: true
   attribute :url
   attribute :phone,     validate: true
-  attribute :site_url,  validate: true
+  attribute :record_url,  validate: true
   attribute :candidate_name, validate: true
   attribute :record_type, validate: true
 

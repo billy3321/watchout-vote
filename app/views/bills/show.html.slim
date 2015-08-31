@@ -32,7 +32,8 @@
   - unless @bill.clarify.blank?
     .iwreply-block
       h4 立委澄清說明
-      = link_to "詳細內容", @bill.clarify.url, target: "_blank", class: "more-txt"
+      - unless @bill.clarify.url.blank?
+        = link_to "詳細內容", @bill.clarify.url, target: "_blank", class: "more-txt"
       .iwr-time 
         | 最後更新時間：
         = @bill.clarify.updated_at.try(:strftime, '%Y-%m-%d %H:%i')
