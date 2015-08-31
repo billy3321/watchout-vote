@@ -35,24 +35,26 @@
   <div id="main" class="inner">
 <div id="header">立委求職中網站管理後台 - <a href="admin_login.html" class="logout">我要登出</a> 
 </div>
-    <h1>議題管理：內容新增圖片</h1>
-    
-<table width="100%" border="1" cellpadding="5">
-          <tr>
-            <th width="109">議題名稱</th>
-            <td width="681" colspan="3"><p>xxxxxx</p></td>
-          </tr>
-          <tr>
-            <th>圖片</th>
-            <td colspan="3"><input type="file" name="fileField" id="fileField" /></td>
-          </tr>
-          <tr>
-            <th valign="top">圖片alt</th>
-            <td colspan="3"><input type="text" name="textfield2" id="textfield2" class="long-input" /></td>
-          </tr>
-          </table>
-          <div class="btn">
-          <input type="submit" name="button" id="button" value="回上頁" class="back"/>
+    <h1>人物專訪管理：內容</h1>
+    <table width="100%" border="1" cellpadding="5">
+      <tr>
+        <th width="131">*人物</th>
+        <td width="281"><p>
+          <select name="select" id="select">
+          </select>
+        </p></td>
+        <th width="99">是否公開</th>
+        <td width="279"><p>
+          <input type="checkbox" name="checkbox" id="checkbox" />
+          公開</p></td>
+      </tr>
+      <tr>
+        <th>*專訪日期</th>
+        <td colspan="3"><input type="text" name="textfield5" id="textfield5" class="input_14" /></td>
+      </tr>
+    </table>
+    <div class="btn">
+        <input type="submit" name="button2" id="button2" value="回上頁" class="back"/>
         <input type="submit" name="button" id="button" value="儲存" class="submit"/>
 </div>
   </div>
