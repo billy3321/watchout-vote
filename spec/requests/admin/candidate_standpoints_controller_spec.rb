@@ -15,6 +15,7 @@ describe "Admin/CandidateStandpoint" do
       disagree: 10,
       abstain: 30,
       notvote: 20,
+      unknown: 10,
       decision: "agree"
     }
   end
