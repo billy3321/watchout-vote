@@ -4,6 +4,7 @@ FactoryGirl.define do
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')) }
     sequence(:description) { |n| "Issue Description #{n}" }
     sequence(:ngo) { |n| "NGO #{n}" }
+    sequence(:summary) { |n| "NGO #{summary}" }
     ngo_link "http://www.google.com"
     published true
   end
