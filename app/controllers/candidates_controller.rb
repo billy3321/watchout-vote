@@ -3,6 +3,7 @@ class CandidatesController < ApplicationController
   before_action :set_issue, except: [:index, :new, :issues, :show]
   before_action :set_candidate_standpoints, except: [:index, :new, :show]
   before_action :set_candidate_standpoint, except: [:index, :new, :issues, :show]
+  before_action :get_record_count, except: [:index, :new, :issues, :show]
 
   # GET /candidates
   def index
@@ -24,15 +25,15 @@ class CandidatesController < ApplicationController
   end
 
   def bills
-    @bills = Bill.get_candidate_bill(@candidate, @issue).page(params[:page])
+    @bills = Bill.get_candidate_bill(@candidate, @issue).date_desc.page(params[:page])
   end
 
   def interpellations
-    @interpellations = Interpellation.get_candidate_interpellation(@candidate, @issue).page(params[:page])
+    @interpellations = Interpellation.get_candidate_interpellation(@candidate, @issue).date_desc.page(params[:page])
   end
 
   def votes
-    @votes = Vote.get_candidate_vote(@candidate, @issue).page(params[:page])
+    @votes = Vote.get_candidate_vote(@candidate, @issue).date_desc.page(params[:page])
   end
 
   private
@@ -47,6 +48,12 @@ class CandidatesController < ApplicationController
 
   def set_issue
     @issue = params[:id] ? Issue.published.find(params[:id]) : nil
+  end
+
+  def get_record_count
+    @bills_count = Bill.get_candidate_bill(@candidate, @issue).count
+    @interpellations_count = Interpellation.get_candidate_interpellation(@candidate, @issue).count
+    @votes_count = Vote.get_candidate_vote(@candidate, @issue).count
   end
 
   def set_candidate_standpoint

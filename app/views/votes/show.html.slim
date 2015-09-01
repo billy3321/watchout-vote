@@ -23,10 +23,16 @@
   .other-sort-tag
     ul
       li = @vote.committee.name
-      - if @vote.category == "hearings"
-        li 公聽會
-      - elsif @vote.category == "meeting"
-        li 委員會
+      - if @vote.category == "law"
+        li 法律提案
+      - elsif @vote.category == "budget"
+        li 預算主決議
+      - elsif @vote.category == "freeze_budget"
+        li 預算凍結案
+      - elsif @vote.category == "extempore"
+        li 臨時動議提案
+      - elsif @vote.category == "process"
+        li 程序提案
   .iwreply-link
     = link_to "如果有誤歡迎來函澄清", vote_clarify_path(@vote)
   - unless @vote.clarify.blank?

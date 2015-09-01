@@ -12,6 +12,12 @@
         = link_to candidate_issue_path(@candidate, c.issue) do
           h2 = c.issue.name
           - c.agree.times do
-            span.yes-s
+            span.agree-s
           - c.disagree.times do
-            span.no-s
+            span.disagree-s
+          - c.abstain.times do
+            span.abstain-s
+          - c.notvote.times do
+            span.notvote-s
+          - c.unknown.times do
+            span.unknown-s

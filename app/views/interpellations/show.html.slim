@@ -23,10 +23,18 @@
   .other-sort-tag
     ul
       li = @interpellation.committee.name
-      - if @interpellation.category == "hearings"
-        li 公聽會
-      - elsif @interpellation.category == "meeting"
-        li 委員會
+      - if @interpellation.category == "sc"
+        li "委員會口頭質詢
+      - elsif @interpellation.category == "sc_document"
+        li 委員會書面質詢
+      - elsif @interpellation.category == "yc"
+        li 院會口頭質詢
+      - elsif @interpellation.category == "yc_document"
+        li 院會書面質詢
+      - elsif @interpellation.category == "hearing"
+        li 公聽會發言
+      - elsif @interpellation.category == "process"
+        li 程序發言
   .iwreply-link
     = link_to "如果有誤歡迎來函澄清", interpellation_clarify_path(@interpellation)
   - unless @interpellation.clarify.blank?

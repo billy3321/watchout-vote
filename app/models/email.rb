@@ -3,6 +3,8 @@ class Email < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   before_validation :lower_case_email
 
+  scope :subscribed, -> { where(subscribed: true) }
+
   private
 
   def lower_case_email

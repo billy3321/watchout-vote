@@ -10,6 +10,7 @@ table border="1" cellpadding="5" width="100%"
     th width="73" 反對
     th width="84" 放棄
     th width="114" 沒投票/無表態
+    th width="84" 未知
     th 操作
   - num = 0
   - @candidate_standpoints.each do |c|
@@ -23,6 +24,7 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = c.disagree
         td align="center" = c.abstain
         td align="center" = c.notvote
+        td align="center" = p.unknown
         td align="center" width="145"
           = link_to "編輯", edit_admin_candidate_standpoint_path(c)
           | ｜
@@ -36,6 +38,7 @@ table border="1" cellpadding="5" width="100%"
         td align="center" = c.disagree
         td align="center" = c.abstain
         td align="center" = c.notvote
+        td align="center" = p.unknown
         td align="center" width="145"
           = link_to "編輯", edit_admin_candidate_standpoint_path(c)
           | ｜

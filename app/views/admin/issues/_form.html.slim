@@ -24,6 +24,10 @@ table border="1" cellpadding="5" width="100%"
     th ＊議題短描述
     td colspan="3"
       = f.input :description, label: false, required: true, input_html: { class: 'long-input' }
+  th width="131" ＊議題總結
+    td width="281" 
+      p
+        = f.input :summary, label: false, required: true, input_html: { class: 'long-input' }
   tr
     th 協力NGO名字
     td colspan="3"

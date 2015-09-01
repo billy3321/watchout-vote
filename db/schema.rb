@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831172548) do
+ActiveRecord::Schema.define(version: 20150901171013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150831172548) do
     t.string   "decision"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "unknown"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -146,14 +147,15 @@ ActiveRecord::Schema.define(version: 20150831172548) do
   add_index "dms_parties", ["dm_id", "party_id"], name: "index_dms_parties_on_dm_id_and_party_id", unique: true, using: :btree
 
   create_table "emails", force: :cascade do |t|
-    t.string   "email",                       default: "", null: false
+    t.string   "email",                       default: "",   null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "delete_confirmation_token"
     t.datetime "delete_confirmation_sent_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "subscribed",                  default: true
   end
 
   add_index "emails", ["confirmation_token"], name: "index_emails_on_confirmation_token", unique: true, using: :btree
@@ -198,6 +200,7 @@ ActiveRecord::Schema.define(version: 20150831172548) do
     t.boolean  "published",   default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "summary"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -223,6 +226,7 @@ ActiveRecord::Schema.define(version: 20150831172548) do
     t.string   "decision"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "unknown"
   end
 
   create_table "promises", force: :cascade do |t|

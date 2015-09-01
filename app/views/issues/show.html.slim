@@ -14,29 +14,41 @@
 .block#result
   h2.ititle#answer
   .analyze-party.analyze-block
-    .yes-block
+    .agree-block
       h3 贊成門檻下修
       - @party_standpoints.agree.each do |p|
         .party-block.party-issue-ana
           = link_to party_issues_path(p.party) do
             h4 = p.party.short_name
             - p.agree.times do
-              span.yes-s
+              span.agree-s
             - p.disagree.times do
-              span.no-s
-    .no-block
+              span.disagree-s
+            - p.abstain.times do
+              span.abstain-s
+            - p.notvote.times do
+              span.notvote-s
+            - p.unknown.times do
+              span.unknown-s
+    .disagree-block
       h3 反對門檻下修
       - @party_standpoints.disagree.each do |p|
         .party-block.party-issue-ana
           = link_to party_issues_path(p.party) do
             h4 = p.party.short_name
             - p.agree.times do
-              span.yes-s
+              span.agree-s
             - p.disagree.times do
-              span.no-s
+              span.disagree-s
+            - p.abstain.times do
+              span.abstain-s
+            - p.notvote.times do
+              span.notvote-s
+            - p.unknown.times do
+              span.unknown-s
 
   .analyze-people.analyze-block
-    .yes-block
+    .agree-block
       h3 贊成門檻下修
       ul.people-list.people-three
         - @candidate_standpoints.agree.each do |c|
@@ -44,7 +56,7 @@
             = link_to candidate_issues_path(c.candidate) do
               = image_tag(c.candidate.image, alt: "")
               h4.name02 = c.candidate.name
-    .no-block
+    .disagree-block
       h3 反對門檻下修
       ul.people-list.people-three
         - @candidate_standpoints.disagree.each do |c|
@@ -52,7 +64,7 @@
             = link_to candidate_issues_path(c.candidate) do
               = image_tag(c.candidate.image, alt: "")
               h4.name02 = c.candidate.name
-    .noanswer-block
+    .notvote-block
       h3 應表態而未表態表態
       ul.people-list.people-three
         - @candidate_standpoints.unknown.each do |c|

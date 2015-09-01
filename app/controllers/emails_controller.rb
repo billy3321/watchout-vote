@@ -3,12 +3,28 @@ class EmailsController < ApplicationController
   # POST /emails
   def create
     session[:return_to] ||= request.referer ? request.referer : root_url
-    @email = Email.new(email_params)
+    @email = Email.where(email: email_params["email"].strip.downcase).first
+    if @email.blank?
+      @email = Email.new(email_params)
+    else
+      @email.subscribed = true
+    end
     if @email.save
       redirect_to session.delete(:return_to), notice: '成功訂閱電子報！'
     else
       redirect_to session.delete(:return_to)
     end
+  end
+
+  # PUT /emails/1
+  def update
+    session[:return_to] ||= request.referer ? request.referer : root_url
+    @email = Email.where(email: email_params["email"].strip.downcase).first
+    unless @email.blank?
+      @email.subscribed = false
+      @email.save
+    end
+    redirect_to session.delete(:return_to), notice: '電子報訂閱取消！'
   end
 
   # DELETE /emails/1

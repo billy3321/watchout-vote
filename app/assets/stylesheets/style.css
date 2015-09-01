@@ -241,23 +241,23 @@ ul{
 	position: relative;
 	padding-bottom: 10px;
 }
-.analyze-block .yes-block h3{
+.analyze-block .agree-block h3{
 	margin-right: 10px;}
-.analyze-block .no-block h3{
+.analyze-block .disagree-block h3{
 	text-align: right;
 	margin-left: 10px;
 }
-.analyze-block .noanswer-block h3{
+.analyze-block .notvote-block h3{
 	text-align: center;
 }
-.analyze-block .yes-block h3::after{
+.analyze-block .agree-block h3::after{
 	content: "▶";
 	position: absolute;
 	right: -5px;
 	bottom: -17px;
 	color: #7c7c7c;
 }
-.analyze-block .no-block h3::after{
+.analyze-block .disagree-block h3::after{
 	content: "◀";
 	position: absolute;
 	left: -5px;
@@ -268,11 +268,11 @@ ul{
 	font-size: 20px;
 	margin-bottom: 7px;
 }
-.yes-block{
+.agree-block{
 	float: right;
 	width: 49%;
 }
-.no-block{
+.disagree-block{
 	float: left;
 	width: 49%;
 }
@@ -286,30 +286,46 @@ ul{
 	display: block;
 	overflow: hidden;
 }
-.party-block span,.yes-s,.no-s{
+.party-block span,.agree-s,.disagree-s{
 	display: block;
 	width: 60px;
 	height: 60px;
 	float: left;
 }
-.yes-s{
+.agree-s{
 	background: #00ffb0;
 }
-.no-s{
+.disagree-s{
 	background: #ff0055;
 }
-.party-issue-ana .yes-s,.party-issue-ana .no-s{
+.notvote-s{
+	/*無表態不投票*/
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+    border:3px solid #4d4d4d;
+}
+.abstain-s{
+	/*棄權*/
+	background: #fff;
+}
+.blur-s{
+	/*模糊*/
+	background: #fff800;
+}
+.party-issue-ana .agree-s,.party-issue-ana .disagree-s,.party-issue-ana .notvote-s,.party-issue-ana .abstain-s,.party-issue-ana .blur-s{
 	width: 30px;
 	height: 30px;
 }
 
-.analyze-people .yes-block{
+.analyze-people .agree-block{
 	width: 30%;
 }
-.analyze-people .no-block{
+.analyze-people .disagree-block{
 	width: 30%;
 }
-.analyze-people .noanswer-block{
+.analyze-people .notvote-block{
 	width: 30%;
 	margin: auto;
 }

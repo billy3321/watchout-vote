@@ -4,7 +4,7 @@
     = simple_form_for @email, url: emails_path, method: :post do |f|
       = f.input :email, as: :email, label: false, required: true, input_html: { class: 'mail-input' }
       button type="submit" class="sbtn" 訂閱
-      button name="_method" type="submit" value="delete" class="sbtn" 取消訂閱
+      button name="_method" type="submit" value="put" class="sbtn" 取消訂閱
 
     .info-txt
       | 依據個資法，關於個人資料蒐集、處理及利用聲明：

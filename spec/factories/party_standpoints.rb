@@ -6,7 +6,8 @@ FactoryGirl.define do
     disagree 15
     abstain 15
     notvote 15
-    decision { ["agree", "disagree", "abstain", "notvote"].sample }
+    unknown 20
+    decision { ["agree", "disagree", "abstain", "notvote", "unknown"].sample }
   end
 
 end

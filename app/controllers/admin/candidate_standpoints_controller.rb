@@ -61,6 +61,6 @@ class Admin::CandidateStandpointsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def candidate_standpoint_params
-    params.require(:candidate_standpoint).permit(:candidate_id, :issue_id, :agree, :disagree, :abstain, :notvote, :decision)
+    params.require(:candidate_standpoint).permit(:candidate_id, :issue_id, :agree, :disagree, :abstain, :notvote, :unknown, :decision)
   end
 end

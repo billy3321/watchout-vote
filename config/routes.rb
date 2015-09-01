@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   end
   resources "clarify_mails", only: :create
   match '/emails', to: 'emails#create',  via: 'post'
+  match '/emails', to: 'emails#update', via: 'put'
   match '/emails', to: 'emails#destroy', via: 'delete'
   namespace :admin do
     root 'static_pages#home'

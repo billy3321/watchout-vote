@@ -23,10 +23,16 @@
   .other-sort-tag
     ul
       li = @bill.committee.name
-      - if @bill.category == "hearings"
-        li 公聽會
-      - elsif @bill.category == "meeting"
-        li 委員會
+      - if @bill.category == "law"
+        li 法律提案
+      - elsif @bill.category == "budget"
+        li 預算主決議
+      - elsif @bill.category == "freeze_budget"
+        li 預算凍結案
+      - elsif @bill.category == "extempore"
+        li 臨時動議提案
+      - elsif @bill.category == "process"
+        li 程序提案
   .iwreply-link
     = link_to "如果有誤歡迎來函澄清", bill_clarify_path(@bill)
   - unless @bill.clarify.blank?
@@ -38,3 +44,4 @@
         | 最後更新時間：
         = @bill.clarify.updated_at.try(:strftime, '%Y-%m-%d %H:%i')
       .iwr-txt = @bill.clarify.content.try(:html_safe)
+

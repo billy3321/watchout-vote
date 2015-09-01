@@ -18,15 +18,21 @@
     .analyze-block.party-issue-ana
       .issue-ana-block.inner-ana
         - @party_standpoint.agree.times do
-          span.yes-s
+          span.agree-s
         - @party_standpoint.disagree.times do
-          span.no-s
+          span.agree-s
+        - @party_standpoint.abstain.times do
+          span.abstain-s
+        - @party_standpoint.notvote.times do
+          span.notvote-s
+        - @party_standpoint.unknown.times do
+          span.unknown-s
 
 .say-list
   ul.say-sort-tag
     li
-      = link_to "發言", party_issue_interpellations_path(@party, @issue)
+      = link_to "發言（#{@interpellations_count}）", party_issue_interpellations_path(@party, @issue)
     li
-      = link_to "提案", party_issue_bills_path(@party, @issue)
+      = link_to "提案（#{@bills_count}）", party_issue_bills_path(@party, @issue)
     li
-      = link_to "表決", party_issue_votes_path(@party, @issue)
+      = link_to "表決（#{@votes_count}）", party_issue_votes_path(@party, @issue)

@@ -17,28 +17,32 @@
   .analyze-block.people-issue-ana
     .issue-ana-block.inner-ana
       - @candidate_standpoint.agree.times do
-        span.yes-s
+        span.agree-s
       - @candidate_standpoint.disagree.times do
-        span.no-s
+        span.disagree-s
+      - @candidate_standpoint.abstain.times do
+        span.abstain-s
+      - @candidate_standpoint.notvote.times do
+        span.notvote-s
+      - @candidate_standpoint.unknown.times do
+        span.unknown-s
 
 .say-list
   ul.say-sort-tag
     li
-      = link_to "發言", candidate_issue_interpellations_path(@candidate, @issue)
+      = link_to "發言（#{@interpellations_count}）", candidate_issue_interpellations_path(@candidate, @issue)
     li
-      = link_to "提案", candidate_issue_bills_path(@candidate, @issue), class: "current"
+      = link_to "提案（#{@bills_count}）", candidate_issue_bills_path(@candidate, @issue), class: "current"
     li
-      = link_to "表決", candidate_issue_votes_path(@candidate, @issue)
+      = link_to "表決（#{@votes_count}）", candidate_issue_votes_path(@candidate, @issue)
   .say-txt-list-wrap
-    .say-txt-wrap
-      - @bills.each do |b|
+    - @bills.each do |b|
+      .say-txt-wrap
         h2
           | 立院提案
           span = b.date.strftime('%Y-%m-%d')
         = link_to bill_path(b), class: "say-txt" do
-          = b.candidate.name
-          | ：
-          = b.content.try(:html_safe)
+          = display_shorter(b.content, 140)
         em.say-tag = b.summary
         = link_to "資料來源", b.url, class: "source-link", target: "_blank"
   #page

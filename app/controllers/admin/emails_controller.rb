@@ -10,7 +10,7 @@ class Admin::EmailsController < Admin::BaseController
   end
 
   def export
-    @emails = Email.all
+    @emails = Email.subscribed.all
     set_meta_tags({
       title: "電子報訂閱匯出"
     })

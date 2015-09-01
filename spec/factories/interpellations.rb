@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence(:summary)  { |n| "Interpellation Summary #{n}" }
     sequence(:detail)  { |n| "Interpellation Detail #{n}" }
     sequence(:date) { |n| n.days.ago }
-    decision { ["agree", "disagree", "abstain", "notvote"].sample }
+    decision { ["agree", "disagree", "abstain", "notvote", "unknown"].sample }
     url "http://www.google.com"
   end
 

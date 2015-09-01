@@ -11,6 +11,13 @@
       = link_to party_issue_path(@party, p.issue) do
         h2 = p.issue.name
         - p.agree.times do
-          span.yes-s
+          span.agree-s
         - p.disagree.times do
-          span.no-s
+          span.disagree-s
+        - p.abstain.times do
+          span.abstain-s
+        - p.notvote.times do
+          span.notvote-s
+        - p.unknown.times do
+          span.unknown-s
+

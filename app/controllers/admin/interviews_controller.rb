@@ -89,6 +89,6 @@ class Admin::InterviewsController < Admin::BaseController
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
     params.require(:interview).permit(:title, :description, :content, :candidate_id, :image, :image_cache, :remove_image, {interview_ids: []}, {interview_positions: []},
-      {order: [:id, :position]}, :position, :published, :date)
+      {order: [:id, :position]}, :position, :published, :date, :alt)
   end
 end

@@ -10,7 +10,7 @@ table border="1" cellpadding="5" width="100%"
   tr
     th ＊投票所屬種類
     td
-      = f.input :category, label: false, collection: [['委員會', 'meeting'], ['公聽會', 'hearings']], input_html: { class: 'form-control' }, include_blank: false
+      = f.input :category, label: false, collection: [["法律提案", "law"], ["預算主決議", "budget"], ["預算凍結案", "freeze_budget"], ["臨時動議題案", "extempore"], ["程序提案", "process"]], input_html: { class: 'form-control' }, include_blank: false
   tr
     th ＊投票日期
     td
@@ -37,7 +37,7 @@ table border="1" cellpadding="5" width="100%"
   tr
     th valign="top" ＊立場統計分類
     td
-      = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote']], input_html: { class: 'form-control' }, include_blank: false
+      = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote'], ['未知', 'unknown']], input_html: { class: 'form-control' }, include_blank: false
   - unless @vote.new_record?
     = f.simple_fields_for :clarify do |c|
       tr

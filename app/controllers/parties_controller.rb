@@ -3,6 +3,7 @@ class PartiesController < ApplicationController
   before_action :set_issue, except: [:index, :new, :issues, :show]
   before_action :set_party_standpoints, except: [:index, :new, :show]
   before_action :set_party_standpoint, except: [:index, :new, :issues, :show]
+  before_action :get_record_count, except: [:index, :new, :issues, :show]
 
   # GET /partys
   def index
@@ -24,15 +25,15 @@ class PartiesController < ApplicationController
   end
 
   def bills
-    @bills = Bill.get_party_bill(@party, @issue).page(params[:page])
+    @bills = Bill.get_party_bill(@party, @issue).date_desc.page(params[:page])
   end
 
   def interpellations
-    @interpellations = Interpellation.get_party_interpellation(@party, @issue).page(params[:page])
+    @interpellations = Interpellation.get_party_interpellation(@party, @issue).date_desc.page(params[:page])
   end
 
   def votes
-    @votes = Vote.get_party_vote(@party, @issue).page(params[:page])
+    @votes = Vote.get_party_vote(@party, @issue).date_desc.page(params[:page])
   end
 
   private
@@ -47,6 +48,12 @@ class PartiesController < ApplicationController
 
   def set_issue
     @issue = params[:id] ? Issue.published.find(params[:id]) : nil
+  end
+
+  def get_record_count
+    @bills_count = Bill.get_party_bill(@party, @issue).count
+    @interpellations_count = Interpellation.get_party_interpellation(@party, @issue).count
+    @votes_count = Vote.get_party_vote(@party, @issue).count
   end
 
   def set_party_standpoint

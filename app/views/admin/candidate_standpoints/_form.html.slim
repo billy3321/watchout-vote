@@ -25,9 +25,13 @@ table border="1" cellpadding="5" width="100%"
     td
       = f.input :notvote, label: false, required: true, input_html: { class: 'input_14', min: 0 }
   tr
+    th valign="top"  ＊未知
+    td
+      = f.input :unknown, label: false, required: true, input_html: { class: 'input_14', min: 0 }
+  tr
     th valign="top" ＊立場統計分類
     td
-      = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote']], input_html: { class: 'form-control' }, include_blank: false
+      = f.input :decision, label: false, collection: [['贊成', 'agree'], ['反對', 'disagree'], ['棄權', 'abstain'], ['無表態', 'notvote'], ['未知', 'unknown']], input_html: { class: 'form-control' }, include_blank: false
 .btn
   - if @candidate_standpoint.new_record?
     = link_to "回上頁", admin_candidate_standpoints_path, class: "back"
