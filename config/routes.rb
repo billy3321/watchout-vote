@@ -69,6 +69,14 @@ Rails.application.routes.draw do
     #   
     # end
   end
+
+  namespace :api do
+    resources :candidates, only: [:show, :index] do
+      member do 
+        get 'interviews'
+      end
+    end
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

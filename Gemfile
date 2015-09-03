@@ -50,6 +50,7 @@ gem 'ransack'
 gem 'unicode-display_width'
 gem 'jquery-datetimepicker-rails'
 gem 'mail_form'
+gem 'rabl-rails'
 
 
 source 'https://rails-assets.org' do

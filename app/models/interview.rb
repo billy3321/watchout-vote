@@ -7,6 +7,7 @@ class Interview < ActiveRecord::Base
   default_scope { order(position: :asc) }
 
   before_save :set_position
+  scope :published, -> { where(published: true) }
 
   private
 
