@@ -11,5 +11,8 @@ child(:@candidate) do
     attributes image_url: :image
     attributes background_url: :background
   end
+  child(:committees) do
+    attributes :id, :name
+  end
 end
 node(:status) {"success"}

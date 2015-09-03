@@ -76,6 +76,18 @@ Rails.application.routes.draw do
         get 'interviews'
       end
     end
+    resources :parties, only: [:show, :index]
+    resources :issues, only: [:show, :index] do
+      member do 
+        get 'slides'
+      end
+    end
+    resources :bills, only: [:show, :index]
+    resources :interpellations, only: [:show, :index]
+    resources :votes, only: [:show, :index]
+    resources :party_standpoints, only: [:show, :index]
+    resources :candidate_standpoints, only: [:show, :index]
+    resources :constituencies, only: [:show, :index]
   end
   # Example resource route with options:
   #   resources :products do
